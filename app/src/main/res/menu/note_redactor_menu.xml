@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/IconSave"
+        android:title="@string/text_action_menu_icon_save"
+        android:icon="@drawable/ic_save"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="3"
+        />
+    <item
+        android:id="@+id/IconBold"
+        android:icon="@drawable/ic_bold"
+        android:orderInCategory="1"
+        android:title="@string/text_action_menu_icon_bold"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/IconColorPicker"
+        android:icon="@drawable/ic_picker"
+        android:orderInCategory="2"
+        android:title="@string/text_action_menu_icon_picker"
+        app:showAsAction="ifRoom" />
+
+
+</menu>

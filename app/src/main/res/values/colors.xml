@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+
+    <!-- Classic Black and White Colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Application System Elements Colors -->
+    <color name="material_A100">#8C9EFF</color>
+    <color name="material_A100_light">#c0cfff</color>
+    <color name="material_A100_dark">#5870cb</color>
+
+    <!-- Backgrounds Colors -->
+    <color name="main_background_color_super_light_gray">#f5f5f6</color>
+    <color name="main_background_color_no_bottom_menu_variant_white">#FFFFFF</color>
+
+    <!-- Text Colors -->
+    <color name="heading_text_color_bold_grey_dark">#747474</color>
+    <color name="classic_text_classic_grey">#7E7E7E</color>
+    <color name="paint_flag_text_color_grey">#B8B8B8</color>
+    <color name="button_text_color">#8C9EFF</color>
+
+
+    <!-- Icon Colors -->
+    <color name="icon_color">#747474</color>
+    <color name="icon_color_on_the_item">#8C9EFF</color>
+    <color name="element_color_on_the_item">#8C9EFF</color>
+
+    <!-- Color Picker Elements Colors -->
+    <color name="color_picker_yellow">#FFE082</color>
+    <color name="color_picker_green">#A5D6A7</color>
+    <color name="color_picker_blue">#81D4FA</color>
+    <color name="color_picker_black">#202020</color>
+    <color name="color_picker_orange">#FFAB91</color>
+    <color name="color_picker_grey">#7E7E7E</color>
+
+
+</resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.14268585131894485" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.238" />
+        <entry key="app/src/main/res/drawable/ic_add.xml" value="0.238" />
+        <entry key="app/src/main/res/drawable/ic_add_shopping_list.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable/ic_bold.xml" value="0.238" />
+        <entry key="app/src/main/res/drawable/ic_delete.xml" value="0.238" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.238" />
+        <entry key="app/src/main/res/drawable/ic_list.xml" value="0.194" />
+        <entry key="app/src/main/res/drawable/ic_new.xml" value="0.194" />
+        <entry key="app/src/main/res/drawable/ic_note.xml" value="0.194" />
+        <entry key="app/src/main/res/drawable/ic_picker.xml" value="0.238" />
+        <entry key="app/src/main/res/drawable/ic_save.xml" value="0.206" />
+        <entry key="app/src/main/res/drawable/ic_screen_add.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.194" />
+        <entry key="app/src/main/res/layout/activity_add_note.xml" value="0.28785400390625004" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_new_note.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_note_redactor.xml" value="0.5335983276367187" />
+        <entry key="app/src/main/res/layout/activity_shop_unit_elements.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_shopping_element.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/dialog_create.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/dialog_delete.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/dialog_edit_element.xml" value="0.35113220214843743" />
+        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/fragment_note.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_shop_list_names.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/fragment_shopping_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_delete_diaolog.xml" value="0.30218068535825543" />
+        <entry key="app/src/main/res/layout/item_edit_text_for_shopping_element.xml" value="0.38594360351562507" />
+        <entry key="app/src/main/res/layout/item_for_activity_shopping_element.xml" value="0.3295003255208333" />
+        <entry key="app/src/main/res/layout/item_for_fragment_note.xml" value="0.47434844970703127" />
+        <entry key="app/src/main/res/layout/item_for_fragment_shopping_list.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/item_for_note.xml" value="0.37495320638020824" />
+        <entry key="app/src/main/res/layout/item_for_shop_name_list.xml" value="0.43012084960937513" />
+        <entry key="app/src/main/res/layout/item_library_for_shopping_element.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/item_unit_element.xml" value="0.30885416666666665" />
+        <entry key="app/src/main/res/layout/new_list_dialog.xml" value="0.2978408813476563" />
+        <entry key="app/src/main/res/layout/note_item.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/note_list_item.xml" value="0.3651520140366263" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/menu/menu_for_shopping_element_activity.xml" value="0.30885416666666665" />
+        <entry key="app/src/main/res/menu/new_note_menu.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/menu/note_add_menu.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.238" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

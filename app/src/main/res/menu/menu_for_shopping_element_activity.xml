@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/deleteShoppingList"
+        android:title="@string/delete_list"
+        app:showAsAction=""
+    />
+
+    <item
+        android:id="@+id/clearShoppingList"
+        android:title="@string/clear_list"
+        app:showAsAction=""
+        />
+
+    <item
+        android:id="@+id/shareShoppingList"
+        android:title="@string/share_list"
+        app:showAsAction=""
+        />
+
+    <item
+        android:id="@+id/newIcon"
+        android:title="@string/new_list"
+        android:icon="@drawable/ic_add_shopping_list"
+        app:showAsAction="always|collapseActionView"
+        android:orderInCategory="1"
+        app:actionLayout="@layout/item_edit_text_for_shopping_element"
+        />
+
+    <item
+        android:id="@+id/saveIcon"
+        android:title="@string/save_list"
+        android:icon="@drawable/ic_save"
+        app:showAsAction="always"
+        android:orderInCategory="2"
+        />
+</menu>
