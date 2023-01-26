@@ -4,7 +4,6 @@ import android.view.MotionEvent
 import android.view.View
 
 class MotionColorPicker : View.OnTouchListener {
-    var delta = 0
     var xDelta = 0.0f
     var yDelta = 0.0f
 
