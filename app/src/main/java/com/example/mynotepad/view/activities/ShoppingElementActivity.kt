@@ -17,6 +17,7 @@ import com.example.mynotepad.R
 import com.example.mynotepad.model.database.MainDataBaseInstance
 import com.example.mynotepad.view_model.MainViewModel
 import com.example.mynotepad.databinding.ActivityShoppingElementBinding
+import com.example.mynotepad.entities.LibraryData
 import com.example.mynotepad.entities.ShoppingElementItemData
 import com.example.mynotepad.entities.ShoppingListItemData
 import com.example.mynotepad.utils.share.ShareHelper
@@ -32,6 +33,7 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
     private  lateinit var shoppingElementItemData: ShoppingElementItemData
     private lateinit var  shoppingElementAdapter: ShoppingElementAdapter
     private lateinit var textWatcher: TextWatcher
+    private lateinit var libraryData: LibraryData
 
 
     private val mainViewModel: MainViewModel by viewModels {
@@ -63,13 +65,14 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
         when (item.itemId) {
             R.id.saveIcon -> {
                 createElementItem()
+                createLibraryData()
             }
             R.id.deleteShoppingList -> {
-                mainViewModel.deleteShoppingListItemData(shoppingListItemData.columnIdNumberShoppingList!!, true)
+                mainViewModel.deleteShoppingListItemDataViewModelFun(shoppingListItemData.columnIdNumberShoppingList!!, true)
                 finish()
             }
             R.id.clearShoppingList -> {
-                mainViewModel.deleteShoppingListItemData(shoppingListItemData.columnIdNumberShoppingList!!, false)
+                mainViewModel.deleteShoppingListItemDataViewModelFun(shoppingListItemData.columnIdNumberShoppingList!!, false)
             }
 
             R.id.shareShoppingList -> {
@@ -94,6 +97,15 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
         )
         editTextLibraryItem.setText("")
         mainViewModel.insertShoppingElementItemData(shoppingElementItemData)
+    }
+
+    private fun createLibraryData() {
+        if(editTextLibraryItem.text.toString().isEmpty()) return
+        libraryData = LibraryData(
+            null,
+            editTextLibraryItem.text.toString()
+        )
+        mainViewModel.insertLibraryDataInItem(libraryData)
     }
 
     private fun expandActionView(): MenuItem.OnActionExpandListener {

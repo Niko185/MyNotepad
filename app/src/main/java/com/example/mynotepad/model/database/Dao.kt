@@ -2,6 +2,7 @@ package com.example.mynotepad.model.database
 
 import androidx.room.*
 import androidx.room.Dao
+import com.example.mynotepad.entities.LibraryData
 import com.example.mynotepad.entities.NoteItemData
 import com.example.mynotepad.entities.ShoppingElementItemData
 import com.example.mynotepad.entities.ShoppingListItemData
@@ -27,16 +28,16 @@ interface Dao {
 
         // ShoppingListFragment Functions Database
     @Query ("SELECT * FROM table_shopping_list_item_data")
-    fun getAllShoppingListItemData(): Flow<List<ShoppingListItemData>>
+    fun getAllShoppingListItemDataDAOFUN(): Flow<List<ShoppingListItemData>>
 
     @Insert
-    suspend fun insertShoppingListItemData(shoppingListItemData: ShoppingListItemData)
+    suspend fun insertShoppingListItemDataDAOFUN(shoppingListItemData: ShoppingListItemData)
 
     @Update
-    suspend fun updateShoppingListItemData(shoppingListItemData: ShoppingListItemData)
+    suspend fun updateShoppingListItemDataDAOFUN(shoppingListItemData: ShoppingListItemData)
 
     @Query("DELETE FROM table_shopping_list_item_data WHERE columnIdNumberShoppingList IS :columnIdNumberShoppingList")
-    suspend fun deleteShoppingListItemData(columnIdNumberShoppingList: Int)
+    suspend fun deleteShoppingListItemDataDAOFUN(columnIdNumberShoppingList: Int)
 
 
         //ShoppingElementActivity Functions Database
@@ -53,4 +54,11 @@ interface Dao {
     suspend fun deleteShoppingElementItemData(columnId: Int)
 
         // LibraryData Functions DataBase
+    @Query ("SELECT * FROM table_library_item_data WHERE column_name LIKE :columnName")
+    suspend fun getAllLibraryItemData(columnName: String) : List<LibraryData>
+
+    @Insert
+    suspend fun insertLibraryDataInAppInspector(libraryData: LibraryData) {
+    }
+
 }

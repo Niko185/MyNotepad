@@ -7,11 +7,11 @@ import java.io.Serializable
 
 
 @Entity (tableName = "table_library_item_data")
-data class LibraryItemData(
+data class LibraryData(
     @PrimaryKey(autoGenerate = true)
-    val columnIdNumberLibrary: Int?,
+    val primaryKey: Int?,
 
-    @ColumnInfo (name = "column_1_name")
+    @ColumnInfo (name = "column_name")
     val columnName: String
 
     ): Serializable

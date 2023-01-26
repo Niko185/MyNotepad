@@ -34,13 +34,13 @@ class ShoppingListAdapter(private val listenerOnClickItemShoppingListFragment: L
 
 
             itemView.setOnClickListener {
-                listenerOnClickItemItemShoppingListFragment.sendShoppingListItemDataForShoppingElementActivity(shoppingListItemData)
+                listenerOnClickItemItemShoppingListFragment.sendShoppingListItemDataForShoppingElementActivityAdapterFun(shoppingListItemData)
             }
             tvButtonDelete.setOnClickListener {
-                listenerOnClickItemItemShoppingListFragment.deleteShoppingListItemData(shoppingListItemData.columnIdNumberShoppingList!!)
+                listenerOnClickItemItemShoppingListFragment.deleteShoppingListItemDataAdapterFun(shoppingListItemData.columnIdNumberShoppingList!!)
             }
             tvButtonEdit.setOnClickListener{
-                listenerOnClickItemItemShoppingListFragment.updateShoppingListItemData(shoppingListItemData)
+                listenerOnClickItemItemShoppingListFragment.updateShoppingListItemDataAdapterFun(shoppingListItemData)
             }
 
         }
@@ -68,9 +68,9 @@ class ShoppingListAdapter(private val listenerOnClickItemShoppingListFragment: L
     }
 
     interface ListenerOnClickItemShoppingListFragment {
-        fun deleteShoppingListItemData(columnIdNumberShoppingList: Int)
-        fun updateShoppingListItemData(shoppingListItemData: ShoppingListItemData)
-        fun sendShoppingListItemDataForShoppingElementActivity(shoppingListItemData: ShoppingListItemData)
+        fun deleteShoppingListItemDataAdapterFun(columnIdNumberShoppingList: Int)
+        fun updateShoppingListItemDataAdapterFun(shoppingListItemData: ShoppingListItemData)
+        fun sendShoppingListItemDataForShoppingElementActivityAdapterFun(shoppingListItemData: ShoppingListItemData)
     }
 
 }

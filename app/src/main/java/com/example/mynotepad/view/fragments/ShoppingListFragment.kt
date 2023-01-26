@@ -56,7 +56,7 @@ class ShoppingListFragment : OptionalFragments(), ShoppingListAdapter.ListenerOn
                     0,
                     ""
                 )
-                mainViewModel.insertShoppingListItemData(shoppingListItemData)
+                mainViewModel.insertShoppingListItemDataViewModelFun(shoppingListItemData)
             }
 
         } ,"")
@@ -81,24 +81,24 @@ class ShoppingListFragment : OptionalFragments(), ShoppingListAdapter.ListenerOn
         fun newInstance() = ShoppingListFragment()
     }
 
-    override fun deleteShoppingListItemData(columnIdNumberShoppingList: Int) {
+    override fun deleteShoppingListItemDataAdapterFun(columnIdNumberShoppingList: Int) {
         DeleteDialog.showDialog(context as AppCompatActivity, object : DeleteDialog.ListenerAction{
             override fun onClickOpenDialog() {
-                mainViewModel.deleteShoppingListItemData(columnIdNumberShoppingList, true)
+                mainViewModel.deleteShoppingListItemDataViewModelFun(columnIdNumberShoppingList, true)
             }
         })
     }
 
-    override fun updateShoppingListItemData(shoppingListItemData: ShoppingListItemData) {
+    override fun updateShoppingListItemDataAdapterFun(shoppingListItemData: ShoppingListItemData) {
         CreateDialog.showDialog(activity as AppCompatActivity, object : CreateDialog.ListenerAction {
             override fun onClickOpenDialog(columnName: String) {
-                mainViewModel.updateShoppingListItemData(shoppingListItemData.copy(columnName = columnName))
+                mainViewModel.updateShoppingListItemDataViewModelFun(shoppingListItemData.copy(columnName = columnName))
             }
         }, shoppingListItemData.columnName)
 
     }
 
-    override fun sendShoppingListItemDataForShoppingElementActivity(shoppingListItemData: ShoppingListItemData) {
+    override fun sendShoppingListItemDataForShoppingElementActivityAdapterFun(shoppingListItemData: ShoppingListItemData) {
         val intent = Intent(activity, ShoppingElementActivity::class.java).apply {
             putExtra(ShoppingElementActivity.KEY_SHOPPING_LIST_NAME_DATA_FULL, shoppingListItemData)
         }

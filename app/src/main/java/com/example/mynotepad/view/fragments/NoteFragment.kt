@@ -83,7 +83,7 @@ class NoteFragment : OptionalFragments(), NoteAdapter.ListenerOnClickItemNoteFra
     }
 
 
-    override fun deleteNoteItemData(columnIdNumberNote: Int) {
+    override fun deleteNoteItemFromRcView(columnIdNumberNote: Int) {
         mainViewModel.deleteNoteItemData(columnIdNumberNote)
     }
 

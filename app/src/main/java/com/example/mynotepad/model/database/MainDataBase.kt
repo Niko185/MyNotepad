@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.mynotepad.entities.LibraryItemData
+import com.example.mynotepad.entities.LibraryData
 import com.example.mynotepad.entities.NoteItemData
 import com.example.mynotepad.entities.ShoppingElementItemData
 import com.example.mynotepad.entities.ShoppingListItemData
 
-@Database(entities = [LibraryItemData::class, NoteItemData::class, ShoppingElementItemData::class, ShoppingListItemData::class], version = 1)
+@Database(entities = [LibraryData::class, NoteItemData::class, ShoppingElementItemData::class, ShoppingListItemData::class], version = 1)
 abstract class MainDataBase : RoomDatabase() {
 
 
