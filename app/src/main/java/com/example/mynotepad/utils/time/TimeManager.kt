@@ -16,7 +16,11 @@ object TimeManager {
         val counter = 0
     }
 
-    fun stopTimer(){
+    fun stopTimer() {
+
+    }
+
+    fun timer(){
 
     }
 
