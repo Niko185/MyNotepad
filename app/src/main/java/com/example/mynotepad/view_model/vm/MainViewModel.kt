@@ -1,7 +1,7 @@
 package com.example.mynotepad.view_model
 
 import androidx.lifecycle.*
-import com.example.mynotepad.entities.LibraryData
+import com.example.mynotepad.entities.LibraryItemData
 import com.example.mynotepad.model.database.MainDataBase
 import com.example.mynotepad.entities.NoteItemData
 import com.example.mynotepad.entities.ShoppingElementItemData
@@ -13,17 +13,15 @@ import java.lang.IllegalArgumentException
 class MainViewModel(database: MainDataBase) : ViewModel() {
     private val useDao = database.getUseDao()
 
-
     // For NoteFragment
-
     val setAllNoteItemData: LiveData<List<NoteItemData>> = useDao.getAllNoteItemData().asLiveData()
 
     fun insertNoteItemData(noteItemData: NoteItemData) = viewModelScope.launch {
         useDao.insertNoteItemData(noteItemData)
     }
 
-    fun deleteNoteItemData(columnIdNumberNote: Int ) = viewModelScope.launch {
-        useDao.deleteNoteItemData(columnIdNumberNote)
+    fun deleteNoteItemData(primaryKey: Int ) = viewModelScope.launch {
+        useDao.deleteNoteItemData(primaryKey)
     }
 
     fun updateNoteItemData(noteItemData: NoteItemData) = viewModelScope.launch {
@@ -32,24 +30,23 @@ class MainViewModel(database: MainDataBase) : ViewModel() {
 
 
     //For ShoppingListFragment
+    val setAllShoppingLisItemData: LiveData<List<ShoppingListItemData>> = useDao.getAllShoppingListItemData().asLiveData()
 
-    val setAllShoppingLisItemData: LiveData<List<ShoppingListItemData>> = useDao.getAllShoppingListItemDataDAOFUN().asLiveData()
-
-    fun insertShoppingListItemDataViewModelFun(shoppingListItemData: ShoppingListItemData) = viewModelScope.launch {
-        useDao.insertShoppingListItemDataDAOFUN(shoppingListItemData)
+    fun insertShoppingListItemData(shoppingListItemData: ShoppingListItemData) = viewModelScope.launch {
+        useDao.insertShoppingListItemData(shoppingListItemData)
     }
 
-    fun deleteShoppingListItemDataViewModelFun(columnIdNumberShoppingList: Int, deleteList: Boolean) = viewModelScope.launch {
-        if(deleteList) useDao.deleteShoppingListItemDataDAOFUN(columnIdNumberShoppingList)
-            useDao.deleteShoppingElementItemData(columnIdNumberShoppingList)
+    fun deleteShoppingListItemData(primaryKey: Int, deleteList: Boolean) = viewModelScope.launch {
+        if(deleteList) useDao.deleteShoppingListItemData(primaryKey)
+            useDao.deleteShoppingElementItemData(primaryKey)
     }
 
-    fun updateShoppingListItemDataViewModelFun(shoppingListItemData: ShoppingListItemData) = viewModelScope.launch {
-        useDao.updateShoppingListItemDataDAOFUN(shoppingListItemData)
+    fun updateShoppingListItemData(shoppingListItemData: ShoppingListItemData) = viewModelScope.launch {
+        useDao.updateShoppingListItemData(shoppingListItemData)
     }
 
 
-    //For ShoppingElementActivity
+    //For ShoppingElementActivity & Library
     fun setAllShoppingElementItemData(columnId: Int): LiveData<List<ShoppingElementItemData>> {
         return  useDao.getAllShoppingElementItemData(columnId).asLiveData()
     }
@@ -58,13 +55,16 @@ class MainViewModel(database: MainDataBase) : ViewModel() {
         useDao.insertShoppingElementItemData(shoppingElementItemData)
     }
 
+    fun deleteShoppingElementItemData(primaryKey: Int) = viewModelScope.launch {
+        useDao.deleteShoppingElementItemData(primaryKey)
+    }
+
     fun updateShoppingElementItemData(shoppingElementItemData: ShoppingElementItemData) = viewModelScope.launch {
         useDao.updateShoppingElementItemData(shoppingElementItemData)
     }
 
-    // For ShoppingElementActivity Fof Library
-    fun insertLibraryDataInItem(libraryData:  LibraryData) = viewModelScope.launch {
-        useDao.insertLibraryDataInAppInspector(libraryData)
+    fun insertLibraryData(libraryItemData:  LibraryItemData) = viewModelScope.launch {
+        useDao.insertLibraryItemData(libraryItemData)
     }
 
     private suspend fun libraryItemCheck(columnName: String): Boolean {

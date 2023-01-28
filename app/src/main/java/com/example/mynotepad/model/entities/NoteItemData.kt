@@ -10,18 +10,18 @@ data class NoteItemData(
 
 
     @PrimaryKey(autoGenerate = true)
-    val columnIdNumberNote: Int?,
+    val primaryKey: Int?,
 
-    @ColumnInfo (name = "column_1_name")
+    @ColumnInfo (name = "column_name")
     val columnName: String,
 
-    @ColumnInfo (name = "column_2_description")
+    @ColumnInfo (name = "column_description")
     val columnDescription: String,
 
-    @ColumnInfo (name = "column_3_time")
+    @ColumnInfo (name = "column_time")
     val columnTime: String,
 
-    @ColumnInfo(name = "column_4_category")
+    @ColumnInfo(name = "column_category")
      val columnCategory: String
 
     ): Serializable

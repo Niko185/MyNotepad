@@ -21,7 +21,7 @@ import com.example.mynotepad.fragments_operation.OptionalFragments
 import com.example.mynotepad.utils.TimeManager
 
 
-class ShoppingListFragment : OptionalFragments(), ShoppingListAdapter.ListenerOnClickItemShoppingListFragment {
+class ShoppingListFragment : OptionalFragments(), ShoppingListAdapter.ListenerItem {
    private lateinit var binding: FragmentShoppingListBinding
    private lateinit var intentLauncherInstanceFromShoppingListFragment: ActivityResultLauncher<Intent>
    private lateinit var shoppingListAdapter: ShoppingListAdapter
@@ -56,7 +56,7 @@ class ShoppingListFragment : OptionalFragments(), ShoppingListAdapter.ListenerOn
                     0,
                     ""
                 )
-                mainViewModel.insertShoppingListItemDataViewModelFun(shoppingListItemData)
+                mainViewModel.insertShoppingListItemData(shoppingListItemData)
             }
 
         } ,"")
@@ -81,10 +81,10 @@ class ShoppingListFragment : OptionalFragments(), ShoppingListAdapter.ListenerOn
         fun newInstance() = ShoppingListFragment()
     }
 
-    override fun deleteShoppingListItemDataAdapterFun(columnIdNumberShoppingList: Int) {
+    override fun deleteShoppingListItemDataAdapterFun(primaryKey: Int) {
         DeleteDialog.showDialog(context as AppCompatActivity, object : DeleteDialog.ListenerAction{
             override fun onClickOpenDialog() {
-                mainViewModel.deleteShoppingListItemDataViewModelFun(columnIdNumberShoppingList, true)
+                mainViewModel.deleteShoppingListItemData(primaryKey, true)
             }
         })
     }
@@ -92,7 +92,7 @@ class ShoppingListFragment : OptionalFragments(), ShoppingListAdapter.ListenerOn
     override fun updateShoppingListItemDataAdapterFun(shoppingListItemData: ShoppingListItemData) {
         CreateDialog.showDialog(activity as AppCompatActivity, object : CreateDialog.ListenerAction {
             override fun onClickOpenDialog(columnName: String) {
-                mainViewModel.updateShoppingListItemDataViewModelFun(shoppingListItemData.copy(columnName = columnName))
+                mainViewModel.updateShoppingListItemData(shoppingListItemData.copy(columnName = columnName))
             }
         }, shoppingListItemData.columnName)
 

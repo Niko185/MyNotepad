@@ -2,7 +2,7 @@ package com.example.mynotepad.model.database
 
 import androidx.room.*
 import androidx.room.Dao
-import com.example.mynotepad.entities.LibraryData
+import com.example.mynotepad.entities.LibraryItemData
 import com.example.mynotepad.entities.NoteItemData
 import com.example.mynotepad.entities.ShoppingElementItemData
 import com.example.mynotepad.entities.ShoppingListItemData
@@ -22,26 +22,26 @@ interface Dao {
     @Update
     suspend fun updateNoteItemData(noteItemData: NoteItemData)
 
-    @Query ("DELETE FROM table_note_item_data WHERE columnIdNumberNote IS :columnIdNumberNote")
-    suspend fun deleteNoteItemData(columnIdNumberNote: Int)
+    @Query ("DELETE FROM table_note_item_data WHERE primaryKey IS :primaryKey")
+    suspend fun deleteNoteItemData(primaryKey: Int)
 
 
         // ShoppingListFragment Functions Database
     @Query ("SELECT * FROM table_shopping_list_item_data")
-    fun getAllShoppingListItemDataDAOFUN(): Flow<List<ShoppingListItemData>>
+    fun getAllShoppingListItemData(): Flow<List<ShoppingListItemData>>
 
     @Insert
-    suspend fun insertShoppingListItemDataDAOFUN(shoppingListItemData: ShoppingListItemData)
+    suspend fun insertShoppingListItemData(shoppingListItemData: ShoppingListItemData)
 
     @Update
-    suspend fun updateShoppingListItemDataDAOFUN(shoppingListItemData: ShoppingListItemData)
+    suspend fun updateShoppingListItemData(shoppingListItemData: ShoppingListItemData)
 
-    @Query("DELETE FROM table_shopping_list_item_data WHERE columnIdNumberShoppingList IS :columnIdNumberShoppingList")
-    suspend fun deleteShoppingListItemDataDAOFUN(columnIdNumberShoppingList: Int)
+    @Query("DELETE FROM table_shopping_list_item_data WHERE primaryKey IS :primaryKey")
+    suspend fun deleteShoppingListItemData(primaryKey: Int)
 
 
-        //ShoppingElementActivity Functions Database
-    @Query ("SELECT * FROM table_shopping_element_item_data WHERE column_4_id LIKE :columnId")
+        //ShoppingElementActivity Functions Database & Library
+    @Query ("SELECT * FROM table_shopping_element_item_data WHERE column_id LIKE :columnId")
     fun getAllShoppingElementItemData(columnId: Int): Flow<List<ShoppingElementItemData>>
 
     @Insert
@@ -50,15 +50,15 @@ interface Dao {
     @Update
     suspend fun updateShoppingElementItemData(shoppingElementItemData: ShoppingElementItemData)
 
-    @Query ("DELETE FROM table_shopping_element_item_data WHERE column_4_id LIKE :columnId")
+    @Query ("DELETE FROM table_shopping_element_item_data WHERE column_id LIKE :columnId")
     suspend fun deleteShoppingElementItemData(columnId: Int)
 
-        // LibraryData Functions DataBase
+
     @Query ("SELECT * FROM table_library_item_data WHERE column_name LIKE :columnName")
-    suspend fun getAllLibraryItemData(columnName: String) : List<LibraryData>
+    suspend fun getAllLibraryItemData(columnName: String) : List<LibraryItemData>
 
     @Insert
-    suspend fun insertLibraryDataInAppInspector(libraryData: LibraryData) {
+    suspend fun insertLibraryItemData(libraryItemData: LibraryItemData) {
     }
 
 }

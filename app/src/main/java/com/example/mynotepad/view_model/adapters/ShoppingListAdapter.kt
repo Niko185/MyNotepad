@@ -12,7 +12,7 @@ import com.example.mynotepad.databinding.ItemForFragmentShoppingListBinding
 import com.example.mynotepad.entities.ShoppingListItemData
 
 
-class ShoppingListAdapter(private val listenerOnClickItemShoppingListFragment: ListenerOnClickItemShoppingListFragment) : ListAdapter<ShoppingListItemData, ShoppingListAdapter.ItemHolder>(ItemComparator()) {
+class ShoppingListAdapter(private val listenerItem: ListenerItem) : ListAdapter<ShoppingListItemData, ShoppingListAdapter.ItemHolder>(ItemComparator()) {
     lateinit var bindingItem: ItemForFragmentShoppingListBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
@@ -20,27 +20,27 @@ class ShoppingListAdapter(private val listenerOnClickItemShoppingListFragment: L
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        return holder.setData(getItem(position), listenerOnClickItemShoppingListFragment)
+        return holder.setData(getItem(position), listenerItem)
     }
 
     class ItemHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val bindingItem = ItemForFragmentShoppingListBinding.bind(view)
 
-        fun setData(shoppingListItemData: ShoppingListItemData, listenerOnClickItemItemShoppingListFragment: ListenerOnClickItemShoppingListFragment) = with(bindingItem) {
+        fun setData(shoppingListItemData: ShoppingListItemData, listenerItem: ListenerItem) = with(bindingItem) {
 
             tvNameList.text = shoppingListItemData.columnName
             tvTimeList.text = shoppingListItemData.columnTime
 
 
             itemView.setOnClickListener {
-                listenerOnClickItemItemShoppingListFragment.sendShoppingListItemDataForShoppingElementActivityAdapterFun(shoppingListItemData)
+                listenerItem.sendShoppingListItemDataForShoppingElementActivityAdapterFun(shoppingListItemData)
             }
             tvButtonDelete.setOnClickListener {
-                listenerOnClickItemItemShoppingListFragment.deleteShoppingListItemDataAdapterFun(shoppingListItemData.columnIdNumberShoppingList!!)
+                listenerItem.deleteShoppingListItemDataAdapterFun(shoppingListItemData.primaryKey!!)
             }
             tvButtonEdit.setOnClickListener{
-                listenerOnClickItemItemShoppingListFragment.updateShoppingListItemDataAdapterFun(shoppingListItemData)
+                listenerItem.updateShoppingListItemDataAdapterFun(shoppingListItemData)
             }
 
         }
@@ -58,7 +58,7 @@ class ShoppingListAdapter(private val listenerOnClickItemShoppingListFragment: L
 
     class ItemComparator : DiffUtil.ItemCallback<ShoppingListItemData>() {
         override fun areItemsTheSame(oldItem: ShoppingListItemData, newItem: ShoppingListItemData): Boolean {
-            return oldItem.columnIdNumberShoppingList == newItem.columnIdNumberShoppingList
+            return oldItem.primaryKey == newItem.primaryKey
         }
 
         override fun areContentsTheSame(oldItem: ShoppingListItemData, newItem: ShoppingListItemData): Boolean {
@@ -67,8 +67,8 @@ class ShoppingListAdapter(private val listenerOnClickItemShoppingListFragment: L
 
     }
 
-    interface ListenerOnClickItemShoppingListFragment {
-        fun deleteShoppingListItemDataAdapterFun(columnIdNumberShoppingList: Int)
+    interface ListenerItem {
+        fun deleteShoppingListItemDataAdapterFun(primaryKey: Int)
         fun updateShoppingListItemDataAdapterFun(shoppingListItemData: ShoppingListItemData)
         fun sendShoppingListItemDataForShoppingElementActivityAdapterFun(shoppingListItemData: ShoppingListItemData)
     }

@@ -39,7 +39,7 @@ class NoteAdapter(private val listenerOnClickItemNoteFragment: ListenerOnClickIt
                     listenerOnClickItemNoteFragment.sendNoteItemDataForNoteRedactorActivity(noteItemData)
                 }
                 deleteItemNoteFragment.setOnClickListener{
-                    listenerOnClickItemNoteFragment.deleteNoteItemFromRcView(noteItemData.columnIdNumberNote!!)
+                    listenerOnClickItemNoteFragment.deleteNoteItemFromRcView(noteItemData.primaryKey!!)
                 }
         }
 
@@ -56,7 +56,7 @@ class NoteAdapter(private val listenerOnClickItemNoteFragment: ListenerOnClickIt
 
     class ItemComparator : DiffUtil.ItemCallback<NoteItemData>() {
         override fun areItemsTheSame(oldItem: NoteItemData, newItem: NoteItemData): Boolean {
-            return oldItem.columnIdNumberNote == newItem.columnIdNumberNote
+            return oldItem.primaryKey == newItem.primaryKey
         }
 
         override fun areContentsTheSame(oldItem: NoteItemData, newItem: NoteItemData): Boolean {

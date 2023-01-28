@@ -8,21 +8,21 @@ import java.io.Serializable
 @Entity (tableName = "table_shopping_list_item_data")
 data class ShoppingListItemData(
     @PrimaryKey (autoGenerate = true)
-    val columnIdNumberShoppingList: Int?,
+    val primaryKey: Int?,
 
-    @ColumnInfo (name = "column_1_name")
+    @ColumnInfo (name = "column_name")
     val columnName: String,
 
-    @ColumnInfo (name = "column_2_time")
+    @ColumnInfo (name = "column_time")
     val columnTime: String,
 
-    @ColumnInfo (name = "column_3_allItemCounter")
+    @ColumnInfo (name = "column_allItemCounter")
     val columnAllItemCounter: Int,
 
-    @ColumnInfo (name = "column_4_checkedItemsCounter")
+    @ColumnInfo (name = "column_checkedItemsCounter")
     val columnCheckedItemCounter :Int,
 
-    @ColumnInfo (name = "column_5_id")
+    @ColumnInfo (name = "column_id")
     val columnId: String,
 
     ) :Serializable

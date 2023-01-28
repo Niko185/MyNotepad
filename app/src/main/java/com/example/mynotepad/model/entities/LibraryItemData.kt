@@ -7,7 +7,7 @@ import java.io.Serializable
 
 
 @Entity (tableName = "table_library_item_data")
-data class LibraryData(
+data class LibraryItemData(
     @PrimaryKey(autoGenerate = true)
     val primaryKey: Int?,
 

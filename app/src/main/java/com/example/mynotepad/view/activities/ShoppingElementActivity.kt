@@ -17,14 +17,14 @@ import com.example.mynotepad.R
 import com.example.mynotepad.model.database.MainDataBaseInstance
 import com.example.mynotepad.view_model.MainViewModel
 import com.example.mynotepad.databinding.ActivityShoppingElementBinding
-import com.example.mynotepad.entities.LibraryData
+import com.example.mynotepad.entities.LibraryItemData
 import com.example.mynotepad.entities.ShoppingElementItemData
 import com.example.mynotepad.entities.ShoppingListItemData
 import com.example.mynotepad.utils.share.ShareHelper
 import com.example.mynotepad.view.dialogs.DialogEditElement
 import com.example.mynotepad.view_model.adapters.ShoppingElementAdapter
 
-class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.ListenerOnClickActionItem {
+class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.ListenerItem {
     private lateinit var binding: ActivityShoppingElementBinding
     private lateinit var saveIconMenuItem: MenuItem
     private lateinit var newIconMenuItem: MenuItem
@@ -33,7 +33,7 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
     private  lateinit var shoppingElementItemData: ShoppingElementItemData
     private lateinit var  shoppingElementAdapter: ShoppingElementAdapter
     private lateinit var textWatcher: TextWatcher
-    private lateinit var libraryData: LibraryData
+    private lateinit var libraryItemData: LibraryItemData
 
 
     private val mainViewModel: MainViewModel by viewModels {
@@ -68,11 +68,11 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
                 createLibraryData()
             }
             R.id.deleteShoppingList -> {
-                mainViewModel.deleteShoppingListItemDataViewModelFun(shoppingListItemData.columnIdNumberShoppingList!!, true)
+                mainViewModel.deleteShoppingListItemData(shoppingListItemData.primaryKey!!, true)
                 finish()
             }
             R.id.clearShoppingList -> {
-                mainViewModel.deleteShoppingListItemDataViewModelFun(shoppingListItemData.columnIdNumberShoppingList!!, false)
+                mainViewModel.deleteShoppingListItemData(shoppingListItemData.primaryKey!!, false)
             }
 
             R.id.shareShoppingList -> {
@@ -92,7 +92,7 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
             editTextLibraryItem.text.toString(),
             null,
             false,
-            shoppingListItemData.columnIdNumberShoppingList!!,
+            shoppingListItemData.primaryKey!!,
             0
         )
         editTextLibraryItem.setText("")
@@ -101,11 +101,11 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
 
     private fun createLibraryData() {
         if(editTextLibraryItem.text.toString().isEmpty()) return
-        libraryData = LibraryData(
+        libraryItemData = LibraryItemData(
             null,
             editTextLibraryItem.text.toString()
         )
-        mainViewModel.insertLibraryDataInItem(libraryData)
+        mainViewModel.insertLibraryData(libraryItemData)
     }
 
     private fun expandActionView(): MenuItem.OnActionExpandListener {
@@ -131,7 +131,7 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
     }
 
     private fun observer() {
-        mainViewModel.setAllShoppingElementItemData(shoppingListItemData.columnIdNumberShoppingList!!).observe(this) {
+        mainViewModel.setAllShoppingElementItemData(shoppingListItemData.primaryKey!!).observe(this) {
             shoppingElementAdapter.submitList(it)
             binding.tvEmpty.visibility = if(it.isEmpty()) {
                 View.VISIBLE
@@ -168,11 +168,15 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
     }
 
 
-    override fun onClickAllItem(shoppingElementItemData: ShoppingElementItemData, stateConstant: Int) {
+    override fun onClickAllItemAdapterFun(shoppingElementItemData: ShoppingElementItemData, stateConstant: Int) {
         when(stateConstant){
             ShoppingElementAdapter.CHEK_BOX_ICON_PRESSED-> mainViewModel.updateShoppingElementItemData(shoppingElementItemData)
             ShoppingElementAdapter.EDIT_ICON_PRESSED -> openEditDialog(shoppingElementItemData)
         }
+
+    }
+
+    override fun deleteShoppingElementItemDataAdapterFun(primaryKey: Int) {
 
     }
 

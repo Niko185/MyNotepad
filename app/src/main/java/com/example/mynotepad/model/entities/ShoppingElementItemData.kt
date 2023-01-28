@@ -7,21 +7,21 @@ import java.io.Serializable
 data class ShoppingElementItemData(
 
     @PrimaryKey(autoGenerate = true)
-    val columnIdNumberShoppingElement: Int?,
+    val primaryKey: Int?,
 
-    @ColumnInfo (name = "column_1_name")
+    @ColumnInfo (name = "column_name")
     val columnName: String,
 
-    @ColumnInfo (name = "column_2_content")
+    @ColumnInfo (name = "column_content")
     val columnContent: String?,
 
-    @ColumnInfo (name = "column_3_checked")
+    @ColumnInfo (name = "column_checked")
     val columnChecked: Boolean = false,
 
-    @ColumnInfo (name = "column_4_id")
+    @ColumnInfo (name = "column_id")
     val columnId: Int,
 
-    @ColumnInfo (name = "column_5_type")
+    @ColumnInfo (name = "column_type")
     val columnType: Int = 0
 
     ) :Serializable
