@@ -8,13 +8,12 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.PrimaryKey
 import com.example.mynotepad.R
 import com.example.mynotepad.databinding.ItemForActivityShoppingElementBinding
 import com.example.mynotepad.databinding.ItemLibraryForShoppingElementBinding
 import com.example.mynotepad.entities.ShoppingElementItemData
 
-class ShoppingElementAdapter(private val listenerItem: ListenerItem) : ListAdapter<ShoppingElementItemData, ShoppingElementAdapter.ItemHolder>(ItemComparator()) {
+class ShoppingElementAdapter(private val listenerScreen: ListenerScreen) : ListAdapter<ShoppingElementItemData, ShoppingElementAdapter.ItemHolder>(ItemComparator()) {
     lateinit var bindingItemElement: ItemForActivityShoppingElementBinding
      lateinit var bindingItemLibrary: ItemLibraryForShoppingElementBinding
 
@@ -27,9 +26,9 @@ class ShoppingElementAdapter(private val listenerItem: ListenerItem) : ListAdapt
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         if(getItem(position).columnType == 0)
-            holder.setDataForShoppingElementItem(getItem(position), listenerItem)
+            holder.setDataForShoppingElementItem(getItem(position), listenerScreen)
         else return // open later holder.setDataForShoppingElementItem(getItem(position))
-           // open later holder.setDataForLibraryItem(getItem(position), listenerItem)
+           // open later holder.setDataForLibraryItem(getItem(position), listenerScreen)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -39,19 +38,23 @@ class ShoppingElementAdapter(private val listenerItem: ListenerItem) : ListAdapt
         // Подготавливаем данные для item, чтобы потом заполнить данными, эти самые item, в функции выше onBindViewHolder(заполнить item)
     class ItemHolder(view: View): RecyclerView.ViewHolder(view) {
                 private val bindingItemElement = ItemForActivityShoppingElementBinding.bind(view)
-                private val bindingItemLibrary = ItemLibraryForShoppingElementBinding.bind(view)
+                //private val bindingItemLibrary = ItemLibraryForShoppingElementBinding.bind(view)
 
-        fun setDataForShoppingElementItem(shoppingElementItemData: ShoppingElementItemData, listenerItem: ListenerItem ) {
+        fun setDataForShoppingElementItem(shoppingElementItemData: ShoppingElementItemData, listenerScreen: ListenerScreen ) {
                 bindingItemElement.nameElement.text = shoppingElementItemData.columnName
                 bindingItemElement.textSmallElement.text = shoppingElementItemData.columnContent
                 bindingItemElement.textSmallElement.visibility = visibilityChecked(shoppingElementItemData)
                 bindingItemElement.checkBoxElement.isChecked = shoppingElementItemData.columnChecked
                 setPaintFlagAndColor()
                 bindingItemElement.checkBoxElement.setOnClickListener {
-                    listenerItem.onClickAllItemAdapterFun(shoppingElementItemData.copy(columnChecked = bindingItemElement.checkBoxElement.isChecked), CHEK_BOX_ICON_PRESSED)
+                    listenerScreen.onClickAllItemAdapterFun(shoppingElementItemData.copy(columnChecked = bindingItemElement.checkBoxElement.isChecked), CHEK_BOX_ICON_PRESSED)
                 }
                 bindingItemElement.imageButtonEditElement.setOnClickListener {
-                    listenerItem.onClickAllItemAdapterFun(shoppingElementItemData, EDIT_ICON_PRESSED)
+                    listenerScreen.onClickAllItemAdapterFun(shoppingElementItemData, EDIT_ICON_PRESSED)
+                }
+
+                bindingItemElement.imageButtonClose.setOnClickListener{
+                    listenerScreen.deleteItemAdapterFun(shoppingElementItemData.primaryKey!!)
                 }
 
 
@@ -61,7 +64,7 @@ class ShoppingElementAdapter(private val listenerItem: ListenerItem) : ListAdapt
         }
 
             /* Open Later
-        fun setDataForLibraryItem(shoppingElementItemDataForLibrary: ShoppingElementItemData, listenerItem: ListenerItem) = with(bindingItemLibrary) {
+        fun setDataForLibraryItem(shoppingElementItemDataForLibrary: ShoppingElementItemData, listenerScreen: ListenerScreen) = with(bindingItemLibrary) {
 
         }
             */
@@ -119,9 +122,9 @@ class ShoppingElementAdapter(private val listenerItem: ListenerItem) : ListAdapt
         const val CHEK_BOX_ICON_PRESSED = 1
     }
 
-    interface ListenerItem {
+    interface ListenerScreen {
         fun onClickAllItemAdapterFun(shoppingElementItemData: ShoppingElementItemData, stateConstant: Int)
-        fun deleteShoppingElementItemDataAdapterFun(primaryKey: Int)
+        fun deleteItemAdapterFun(primaryKey: Int)
     }
 
 

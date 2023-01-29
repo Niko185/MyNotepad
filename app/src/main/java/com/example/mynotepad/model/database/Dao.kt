@@ -50,8 +50,11 @@ interface Dao {
     @Update
     suspend fun updateShoppingElementItemData(shoppingElementItemData: ShoppingElementItemData)
 
+    @Query ("DELETE FROM table_shopping_element_item_data WHERE primaryKey IS :primaryKey")
+    suspend fun deleteShoppingElementItemData(primaryKey: Int)
+
     @Query ("DELETE FROM table_shopping_element_item_data WHERE column_id LIKE :columnId")
-    suspend fun deleteShoppingElementItemData(columnId: Int)
+    suspend fun clearShoppingElementItemData(columnId: Int)
 
 
     @Query ("SELECT * FROM table_library_item_data WHERE column_name LIKE :columnName")

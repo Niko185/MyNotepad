@@ -36,9 +36,9 @@ class MainViewModel(database: MainDataBase) : ViewModel() {
         useDao.insertShoppingListItemData(shoppingListItemData)
     }
 
-    fun deleteShoppingListItemData(primaryKey: Int, deleteList: Boolean) = viewModelScope.launch {
-        if(deleteList) useDao.deleteShoppingListItemData(primaryKey)
-            useDao.deleteShoppingElementItemData(primaryKey)
+    fun deleteShoppingListItemData(primaryKey: Int) = viewModelScope.launch {
+         useDao.deleteShoppingListItemData(primaryKey)
+
     }
 
     fun updateShoppingListItemData(shoppingListItemData: ShoppingListItemData) = viewModelScope.launch {
@@ -50,13 +50,16 @@ class MainViewModel(database: MainDataBase) : ViewModel() {
     fun setAllShoppingElementItemData(columnId: Int): LiveData<List<ShoppingElementItemData>> {
         return  useDao.getAllShoppingElementItemData(columnId).asLiveData()
     }
+    fun deleteShoppingElementItemData(primaryKey: Int) = viewModelScope.launch{
+        useDao.deleteShoppingElementItemData(primaryKey)
+    }
 
     fun insertShoppingElementItemData(shoppingElementItemData: ShoppingElementItemData) = viewModelScope.launch{
         useDao.insertShoppingElementItemData(shoppingElementItemData)
     }
 
-    fun deleteShoppingElementItemData(primaryKey: Int) = viewModelScope.launch {
-        useDao.deleteShoppingElementItemData(primaryKey)
+    fun clearShoppingElementItemData(primaryKey: Int) = viewModelScope.launch {
+        useDao.clearShoppingElementItemData(primaryKey)
     }
 
     fun updateShoppingElementItemData(shoppingElementItemData: ShoppingElementItemData) = viewModelScope.launch {

@@ -24,7 +24,7 @@ import com.example.mynotepad.utils.share.ShareHelper
 import com.example.mynotepad.view.dialogs.DialogEditElement
 import com.example.mynotepad.view_model.adapters.ShoppingElementAdapter
 
-class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.ListenerItem {
+class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.ListenerScreen {
     private lateinit var binding: ActivityShoppingElementBinding
     private lateinit var saveIconMenuItem: MenuItem
     private lateinit var newIconMenuItem: MenuItem
@@ -67,12 +67,15 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
                 createElementItem()
                 createLibraryData()
             }
+
             R.id.deleteShoppingList -> {
-                mainViewModel.deleteShoppingListItemData(shoppingListItemData.primaryKey!!, true)
+                mainViewModel.clearShoppingElementItemData(shoppingListItemData.primaryKey!!)
+                mainViewModel.deleteShoppingListItemData(shoppingListItemData.primaryKey!!)
                 finish()
             }
+
             R.id.clearShoppingList -> {
-                mainViewModel.deleteShoppingListItemData(shoppingListItemData.primaryKey!!, false)
+                mainViewModel.clearShoppingElementItemData(shoppingListItemData.primaryKey!!)
             }
 
             R.id.shareShoppingList -> {
@@ -176,8 +179,10 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
 
     }
 
-    override fun deleteShoppingElementItemDataAdapterFun(primaryKey: Int) {
 
+
+    override fun deleteItemAdapterFun(primaryKey: Int) {
+        mainViewModel.deleteShoppingElementItemData(primaryKey)
     }
 
     private fun openEditDialog(shoppingElementItemData: ShoppingElementItemData) = with(binding){

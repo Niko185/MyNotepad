@@ -67,7 +67,7 @@ class NoteAdapter(private val listenerOnClickItemNoteFragment: ListenerOnClickIt
 
 
     interface ListenerOnClickItemNoteFragment {
-        fun deleteNoteItemFromRcView(columnIdNumberNote: Int)
+        fun deleteNoteItemFromRcView(primaryKey: Int)
         fun sendNoteItemDataForNoteRedactorActivity(noteItemData: NoteItemData)
     }
 

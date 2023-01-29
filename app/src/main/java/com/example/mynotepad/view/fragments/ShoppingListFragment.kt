@@ -84,7 +84,7 @@ class ShoppingListFragment : OptionalFragments(), ShoppingListAdapter.ListenerIt
     override fun deleteShoppingListItemDataAdapterFun(primaryKey: Int) {
         DeleteDialog.showDialog(context as AppCompatActivity, object : DeleteDialog.ListenerAction{
             override fun onClickOpenDialog() {
-                mainViewModel.deleteShoppingListItemData(primaryKey, true)
+                mainViewModel.deleteShoppingListItemData(primaryKey)
             }
         })
     }
