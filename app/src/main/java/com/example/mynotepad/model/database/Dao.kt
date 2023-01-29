@@ -56,12 +56,12 @@ interface Dao {
     @Query ("DELETE FROM table_shopping_element_item_data WHERE column_id LIKE :columnId")
     suspend fun clearShoppingElementItemData(columnId: Int)
 
-
+    // Library Request
     @Query ("SELECT * FROM table_library_item_data WHERE column_name LIKE :columnName")
     suspend fun getAllLibraryItemData(columnName: String) : List<LibraryItemData>
 
     @Insert
-    suspend fun insertLibraryItemData(libraryItemData: LibraryItemData) {
-    }
+    suspend fun insertLibraryItemData(libraryItemData: LibraryItemData)
+
 
 }

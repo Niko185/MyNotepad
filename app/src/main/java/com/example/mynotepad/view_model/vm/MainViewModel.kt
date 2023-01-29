@@ -46,7 +46,7 @@ class MainViewModel(database: MainDataBase) : ViewModel() {
     }
 
 
-    //For ShoppingElementActivity & Library
+    //For ShoppingElementActivity
     fun setAllShoppingElementItemData(columnId: Int): LiveData<List<ShoppingElementItemData>> {
         return  useDao.getAllShoppingElementItemData(columnId).asLiveData()
     }
@@ -54,8 +54,9 @@ class MainViewModel(database: MainDataBase) : ViewModel() {
         useDao.deleteShoppingElementItemData(primaryKey)
     }
 
-    fun insertShoppingElementItemData(shoppingElementItemData: ShoppingElementItemData) = viewModelScope.launch{
+    fun insertShoppingElementAndLibraryItemData(shoppingElementItemData: ShoppingElementItemData) = viewModelScope.launch{
         useDao.insertShoppingElementItemData(shoppingElementItemData)
+        if(!isNameNotHereLibrary(shoppingElementItemData.columnName)) useDao.insertLibraryItemData(LibraryItemData(null, shoppingElementItemData.columnName))
     }
 
     fun clearShoppingElementItemData(primaryKey: Int) = viewModelScope.launch {
@@ -66,16 +67,29 @@ class MainViewModel(database: MainDataBase) : ViewModel() {
         useDao.updateShoppingElementItemData(shoppingElementItemData)
     }
 
-    fun insertLibraryData(libraryItemData:  LibraryItemData) = viewModelScope.launch {
-        useDao.insertLibraryItemData(libraryItemData)
+    // For Library
+    var libraryItems = MutableLiveData<List<LibraryItemData>>()
+
+    fun getAllLibraryItemData(columnName: String) = viewModelScope.launch {
+    libraryItems.postValue(useDao.getAllLibraryItemData(columnName))
     }
 
-    private suspend fun libraryItemCheck(columnName: String): Boolean {
+    private suspend fun isNameNotHereLibrary(columnName: String): Boolean {
         return useDao.getAllLibraryItemData(columnName).isNotEmpty()
     }
 
 
 
+
+
+
+
+
+/* открыть если надутся решение убрать функцию из insertShoppingElementAndLibraryItemData
+    fun insertLibraryItemData(libraryItemData:  LibraryItemData) = viewModelScope.launch {
+        useDao.insertLibraryItemData(libraryItemData)
+    }
+*/
     class MainViewModelFactory(val database: MainDataBase) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if(modelClass.isAssignableFrom(MainViewModel::class.java)){

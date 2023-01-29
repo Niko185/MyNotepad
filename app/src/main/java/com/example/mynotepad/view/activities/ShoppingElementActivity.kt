@@ -65,7 +65,6 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
         when (item.itemId) {
             R.id.saveIcon -> {
                 createElementItem()
-                createLibraryData()
             }
 
             R.id.deleteShoppingList -> {
@@ -99,29 +98,29 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
             0
         )
         editTextLibraryItem.setText("")
-        mainViewModel.insertShoppingElementItemData(shoppingElementItemData)
+        mainViewModel.insertShoppingElementAndLibraryItemData(shoppingElementItemData)
     }
 
-    private fun createLibraryData() {
-        if(editTextLibraryItem.text.toString().isEmpty()) return
-        libraryItemData = LibraryItemData(
-            null,
-            editTextLibraryItem.text.toString()
-        )
-        mainViewModel.insertLibraryData(libraryItemData)
-    }
 
+            // открылось меню edit text
     private fun expandActionView(): MenuItem.OnActionExpandListener {
         return object : MenuItem.OnActionExpandListener {
             override fun onMenuItemActionExpand(p0: MenuItem?): Boolean {
                 saveIconMenuItem.isVisible = true
                 editTextLibraryItem.addTextChangedListener(textWatcher)
+                observerLibrary()
+                mainViewModel.setAllShoppingElementItemData(shoppingListItemData.primaryKey!!).removeObservers(this@ShoppingElementActivity)
+                mainViewModel.getAllLibraryItemData("%%")
                 return true
             }
+            // Закрылось меню editText
             override fun onMenuItemActionCollapse(p0: MenuItem?): Boolean {
                 saveIconMenuItem.isVisible = false
                 editTextLibraryItem.removeTextChangedListener(textWatcher)
                 invalidateOptionsMenu()
+                mainViewModel.libraryItems.removeObservers(this@ShoppingElementActivity)
+                editTextLibraryItem.setText("")
+                observer()
                 return true
             }
         }
@@ -142,9 +141,27 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
         }
     }
 
+    private fun observerLibrary(){
+        mainViewModel.libraryItems.observe(this) {
+            val tempElementList = ArrayList<ShoppingElementItemData>()
+            it.forEach{ item->
+                val elementItem = ShoppingElementItemData(
+                    item.primaryKey,
+                    item.columnName,
+                    "",
+                    false,
+                    0,
+                    1
+                )
+                tempElementList.add(elementItem)
+            }
+            shoppingElementAdapter.submitList(tempElementList)
+        }
+    }
+
     private fun getAllShoppingListNameData() {
         shoppingListItemData = intent.getSerializableExtra(KEY_SHOPPING_LIST_NAME_DATA_FULL) as ShoppingListItemData
-       // binding.tvTestText.text = shoppingListItemData.columnName
+
     }
     companion object {
         const val KEY_SHOPPING_LIST_NAME_DATA_FULL = "key_shopping_list_name_data_full"
@@ -161,6 +178,7 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 Log.d("myLog", "Text chair: $p0")
+                mainViewModel.getAllLibraryItemData("%$p0%")
             }
 
             override fun afterTextChanged(p0: Editable?) {
