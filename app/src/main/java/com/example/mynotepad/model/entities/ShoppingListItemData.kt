@@ -16,8 +16,8 @@ data class ShoppingListItemData(
     @ColumnInfo (name = "column_time")
     val columnTime: String,
 
-    @ColumnInfo (name = "column_allItemCounter")
-    val columnAllItemCounter: Int,
+    @ColumnInfo (name = "column_elementInList")
+    val columnElementInList: Int,
 
     @ColumnInfo (name = "column_checkedItemsCounter")
     val columnCheckedItemCounter :Int,

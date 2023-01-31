@@ -1,8 +1,11 @@
 package com.example.mynotepad.adapters
 
+import android.content.Context
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -43,6 +46,21 @@ class ShoppingListAdapter(private val listenerItem: ListenerItem) : ListAdapter<
                 listenerItem.updateShoppingListItemDataAdapterFun(shoppingListItemData)
             }
 
+            val colorState = ColorStateList.valueOf(progressBarColor(shoppingListItemData, bindingItem.root.context))
+            progressBarList.max = shoppingListItemData.columnElementInList
+            progressBarList.progress = shoppingListItemData.columnCheckedItemCounter
+            progressBarList.progressTintList = colorState
+
+
+            cardCounter.backgroundTintList = colorState
+            val counterText = "${shoppingListItemData.columnCheckedItemCounter} / ${shoppingListItemData.columnElementInList}"
+            tvCounterList.text = counterText
+        }
+
+        private fun progressBarColor(shoppingListItemData: ShoppingListItemData, context: Context): Int{
+            return if(shoppingListItemData.columnCheckedItemCounter == shoppingListItemData.columnElementInList) {
+                ContextCompat.getColor(context, R.color.material_A100)
+            } else ContextCompat.getColor(context, R.color.material_A100_light)
         }
 
 

@@ -229,6 +229,22 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
         })
     }
 
+    // Заполнение shoppingListItem исходя из данных внутри.
+    private fun saveSorted(){
+        var checkedItemCounter = 0
+        shoppingElementAdapter.currentList.forEach {
+            if(it.columnChecked) checkedItemCounter++
+        }
+        val sortedShoppingList = shoppingListItemData.copy(
+             columnElementInList = shoppingElementAdapter.itemCount,
+             columnCheckedItemCounter = checkedItemCounter
+        )
+        mainViewModel.updateShoppingListItemData(sortedShoppingList)
+    }
+    override fun onBackPressed() {
+        saveSorted()
+        super.onBackPressed()
+    }
 
 
 
