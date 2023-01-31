@@ -63,5 +63,11 @@ interface Dao {
     @Insert
     suspend fun insertLibraryItemData(libraryItemData: LibraryItemData)
 
+    @Update
+    suspend fun updateLibraryItemData(libraryItemData: LibraryItemData)
+
+    @Query ("DELETE FROM table_library_item_data WHERE primaryKey IS :primaryKey")
+    suspend fun deleteLibraryItemData(primaryKey: Int)
+
 
 }

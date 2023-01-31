@@ -156,6 +156,9 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
                 tempElementList.add(elementItem)
             }
             shoppingElementAdapter.submitList(tempElementList)
+            binding.tvEmpty.visibility = if(it.isEmpty()) {
+                View.VISIBLE
+            } else View.GONE
         }
     }
 
@@ -188,27 +191,43 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
         }
     }
 
-
-    override fun onClickAllItemAdapterFun(shoppingElementItemData: ShoppingElementItemData, stateConstant: Int) {
-        when(stateConstant){
-            ShoppingElementAdapter.CHEK_BOX_ICON_PRESSED-> mainViewModel.updateShoppingElementItemData(shoppingElementItemData)
-            ShoppingElementAdapter.EDIT_ICON_PRESSED -> openEditDialog(shoppingElementItemData)
-        }
-
-    }
-
-
-
     override fun deleteItemAdapterFun(primaryKey: Int) {
         mainViewModel.deleteShoppingElementItemData(primaryKey)
     }
 
-    private fun openEditDialog(shoppingElementItemData: ShoppingElementItemData) = with(binding){
-        DialogEditElement.showDialog(this@ShoppingElementActivity, shoppingElementItemData, object: DialogEditElement.ListenerAction {
+
+    override fun onClickAllItemAdapterFun(shoppingElementItemData: ShoppingElementItemData, stateConstant: Int) {
+        when(stateConstant){
+            ShoppingElementAdapter.CHEK_BOX_ICON_PRESSED-> mainViewModel.updateShoppingElementItemData(shoppingElementItemData)
+            ShoppingElementAdapter.EDIT_ICON_PRESSED -> openEditElementDialog(shoppingElementItemData)
+            ShoppingElementAdapter.EDIT_ICON_LIBRARY_ITEM_PRESSED -> openEditLibraryDialog(shoppingElementItemData)
+            ShoppingElementAdapter.DELETE_ICON_LIBRARY_ITEM_PRESSED -> {
+                mainViewModel.deleteLibraryItemData(shoppingElementItemData.primaryKey!!)
+                mainViewModel.getAllLibraryItemData("%${editTextLibraryItem.text}%")
+            }
+        }
+    }
+
+    private fun openEditElementDialog(shoppingElementItemData: ShoppingElementItemData) {
+        DialogEditElement.showDialog(this, shoppingElementItemData, object: DialogEditElement.ListenerAction {
             override fun onClickOpenDialog(item: ShoppingElementItemData) {
                 mainViewModel.updateShoppingElementItemData(item)
             }
 
         })
     }
+
+    private fun openEditLibraryDialog(shoppingElementItemData: ShoppingElementItemData) {
+        DialogEditElement.showDialog(this, shoppingElementItemData, object : DialogEditElement.ListenerAction {
+            override fun onClickOpenDialog(item: ShoppingElementItemData) {
+                mainViewModel.updateLibraryItemData(LibraryItemData(item.primaryKey, item.columnName))
+                mainViewModel.getAllLibraryItemData("%${editTextLibraryItem.text}%")
+            }
+
+        })
+    }
+
+
+
+
 }

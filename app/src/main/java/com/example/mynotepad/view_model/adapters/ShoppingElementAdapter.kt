@@ -26,8 +26,8 @@ class ShoppingElementAdapter(private val listenerScreen: ListenerScreen) : ListA
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         if (getItem(position).columnType == 0)
-            holder.setDataForShoppingElementItem(getItem(position), listenerScreen)
-        else  holder.setLibraryData(getItem(position), listenerScreen)
+            holder.setDataShoppingElementItem(getItem(position), listenerScreen)
+        else  holder.setDataLibraryItem(getItem(position), listenerScreen)
 
     }
 
@@ -41,7 +41,7 @@ class ShoppingElementAdapter(private val listenerScreen: ListenerScreen) : ListA
 
 
 
-        fun setDataForShoppingElementItem(
+        fun setDataShoppingElementItem(
             shoppingElementItemData: ShoppingElementItemData,
             listenerScreen: ListenerScreen
         ) {
@@ -67,9 +67,16 @@ class ShoppingElementAdapter(private val listenerScreen: ListenerScreen) : ListA
             }
         }
 
-        fun setLibraryData(shoppingElementItemData: ShoppingElementItemData, listenerScreen: ListenerScreen) {
+        fun setDataLibraryItem(shoppingElementItemData: ShoppingElementItemData, listenerScreen: ListenerScreen) {
              val bindingLibraryElement = ItemLibraryForShoppingElementBinding.bind(view)
-            bindingLibraryElement.tvTitleLibrary.text = shoppingElementItemData.columnName
+
+            bindingLibraryElement.tvTitleLibraryItem.text = shoppingElementItemData.columnName
+            bindingLibraryElement.imEditLibraryItem.setOnClickListener {
+                listenerScreen.onClickAllItemAdapterFun(shoppingElementItemData, EDIT_ICON_LIBRARY_ITEM_PRESSED)
+            }
+            bindingLibraryElement.imDeleteLibraryItem.setOnClickListener {
+                listenerScreen.onClickAllItemAdapterFun(shoppingElementItemData, DELETE_ICON_LIBRARY_ITEM_PRESSED)
+            }
         }
 
 
@@ -121,6 +128,8 @@ class ShoppingElementAdapter(private val listenerScreen: ListenerScreen) : ListA
     companion object {
         const val EDIT_ICON_PRESSED = 0
         const val CHEK_BOX_ICON_PRESSED = 1
+        const val EDIT_ICON_LIBRARY_ITEM_PRESSED = 2
+        const val DELETE_ICON_LIBRARY_ITEM_PRESSED = 3
     }
 
     interface ListenerScreen {

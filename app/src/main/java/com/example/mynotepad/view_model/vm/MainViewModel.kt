@@ -74,22 +74,21 @@ class MainViewModel(database: MainDataBase) : ViewModel() {
     libraryItems.postValue(useDao.getAllLibraryItemData(columnName))
     }
 
+    fun updateLibraryItemData(libraryItemData: LibraryItemData) = viewModelScope.launch {
+        useDao.updateLibraryItemData(libraryItemData)
+    }
+
+    fun deleteLibraryItemData(primaryKey: Int) = viewModelScope.launch {
+        useDao.deleteLibraryItemData(primaryKey)
+    }
+
     private suspend fun isNameNotHereLibrary(columnName: String): Boolean {
         return useDao.getAllLibraryItemData(columnName).isNotEmpty()
     }
 
 
 
-
-
-
-
-
-/* открыть если надутся решение убрать функцию из insertShoppingElementAndLibraryItemData
-    fun insertLibraryItemData(libraryItemData:  LibraryItemData) = viewModelScope.launch {
-        useDao.insertLibraryItemData(libraryItemData)
-    }
-*/
+     // ViewModelFactory
     class MainViewModelFactory(val database: MainDataBase) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if(modelClass.isAssignableFrom(MainViewModel::class.java)){

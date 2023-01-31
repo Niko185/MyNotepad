@@ -3,6 +3,7 @@ package com.example.mynotepad.view.dialogs
 import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import com.example.mynotepad.databinding.DialogEditElementBinding
 import com.example.mynotepad.entities.ShoppingElementItemData
 
@@ -19,6 +20,7 @@ object DialogEditElement {
         bindingDialog.apply {
             edName.setText(item.columnName)
             edInfo.setText(item.columnContent)
+            if(item.columnType == 1) edInfo.visibility = View.GONE
             bUpdate.setOnClickListener {
                 if(edName.text.toString().isNotEmpty()){
                     val itemInfo = if(edInfo.text.isEmpty()) null else edInfo.text.toString()
