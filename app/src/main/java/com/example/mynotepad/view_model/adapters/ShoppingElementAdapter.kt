@@ -77,6 +77,10 @@ class ShoppingElementAdapter(private val listenerScreen: ListenerScreen) : ListA
             bindingLibraryElement.imDeleteLibraryItem.setOnClickListener {
                 listenerScreen.onClickAllItemAdapterFun(shoppingElementItemData, DELETE_ICON_LIBRARY_ITEM_PRESSED)
             }
+
+            itemView.setOnClickListener {
+                listenerScreen.onClickAllItemAdapterFun(shoppingElementItemData, ADD_ICON_LIBRARY_ITEM)
+            }
         }
 
 
@@ -130,6 +134,7 @@ class ShoppingElementAdapter(private val listenerScreen: ListenerScreen) : ListA
         const val CHEK_BOX_ICON_PRESSED = 1
         const val EDIT_ICON_LIBRARY_ITEM_PRESSED = 2
         const val DELETE_ICON_LIBRARY_ITEM_PRESSED = 3
+        const val ADD_ICON_LIBRARY_ITEM = 4
     }
 
     interface ListenerScreen {

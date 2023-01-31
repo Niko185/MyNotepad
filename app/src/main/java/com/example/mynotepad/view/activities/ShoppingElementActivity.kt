@@ -64,7 +64,7 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
 
         when (item.itemId) {
             R.id.saveIcon -> {
-                createElementItem()
+                createElementItem( editTextLibraryItem.text.toString())
             }
 
             R.id.deleteShoppingList -> {
@@ -87,11 +87,11 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
         return super.onOptionsItemSelected(item)
     }
 
-    private fun createElementItem() {
-        if(editTextLibraryItem.text.toString().isEmpty()) return
+    private fun createElementItem(columnName: String) {
+        if(columnName.isEmpty()) return
         val shoppingElementItemData = ShoppingElementItemData(
             null,
-            editTextLibraryItem.text.toString(),
+            columnName,
             null,
             false,
             shoppingListItemData.primaryKey!!,
@@ -156,6 +156,7 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
                 tempElementList.add(elementItem)
             }
             shoppingElementAdapter.submitList(tempElementList)
+            binding.tvEmpty.text = "Not Variant"
             binding.tvEmpty.visibility = if(it.isEmpty()) {
                 View.VISIBLE
             } else View.GONE
@@ -201,6 +202,7 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
             ShoppingElementAdapter.CHEK_BOX_ICON_PRESSED-> mainViewModel.updateShoppingElementItemData(shoppingElementItemData)
             ShoppingElementAdapter.EDIT_ICON_PRESSED -> openEditElementDialog(shoppingElementItemData)
             ShoppingElementAdapter.EDIT_ICON_LIBRARY_ITEM_PRESSED -> openEditLibraryDialog(shoppingElementItemData)
+            ShoppingElementAdapter.ADD_ICON_LIBRARY_ITEM -> createElementItem(shoppingElementItemData.columnName)
             ShoppingElementAdapter.DELETE_ICON_LIBRARY_ITEM_PRESSED -> {
                 mainViewModel.deleteLibraryItemData(shoppingElementItemData.primaryKey!!)
                 mainViewModel.getAllLibraryItemData("%${editTextLibraryItem.text}%")
