@@ -19,6 +19,7 @@
     <!-- Text Colors -->
     <color name="heading_text_color_bold_grey_dark">#747474</color>
     <color name="classic_text_classic_grey">#7E7E7E</color>
+    <color name="classic_text_classic_grey_tint">#807E7E7E</color>
     <color name="paint_flag_text_color_grey">#B8B8B8</color>
     <color name="button_text_color">#8C9EFF</color>
 

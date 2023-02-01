@@ -21,7 +21,7 @@
         <entry key="app/src/main/res/layout/activity_add_note.xml" value="0.28785400390625004" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_new_note.xml" value="0.3098958333333333" />
-        <entry key="app/src/main/res/layout/activity_note_redactor.xml" value="0.5335983276367187" />
+        <entry key="app/src/main/res/layout/activity_note_redactor.xml" value="0.3503936767578125" />
         <entry key="app/src/main/res/layout/activity_shop_unit_elements.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_shopping_element.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dialog_create.xml" value="0.3098958333333333" />
@@ -34,8 +34,8 @@
         <entry key="app/src/main/res/layout/item_delete_diaolog.xml" value="0.30218068535825543" />
         <entry key="app/src/main/res/layout/item_edit_text_for_shopping_element.xml" value="0.38594360351562507" />
         <entry key="app/src/main/res/layout/item_for_activity_shopping_element.xml" value="0.3295003255208333" />
-        <entry key="app/src/main/res/layout/item_for_fragment_note.xml" value="0.47434844970703127" />
-        <entry key="app/src/main/res/layout/item_for_fragment_shopping_list.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/item_for_fragment_note.xml" value="0.3371002197265625" />
+        <entry key="app/src/main/res/layout/item_for_fragment_shopping_list.xml" value="0.5009724934895833" />
         <entry key="app/src/main/res/layout/item_for_note.xml" value="0.37495320638020824" />
         <entry key="app/src/main/res/layout/item_for_shop_name_list.xml" value="0.43012084960937513" />
         <entry key="app/src/main/res/layout/item_library_for_shopping_element.xml" value="0.3098958333333333" />

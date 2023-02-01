@@ -8,8 +8,8 @@
         android:id="@+id/itemNameList"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        app:cardCornerRadius="4dp"
+        android:layout_marginTop="0.5dp"
+        app:cardCornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,8 +29,7 @@
                 android:layout_marginEnd="100dp"
                 android:layout_marginBottom="4dp"
                 android:text="TextView"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tvTimeList"
@@ -40,15 +39,17 @@
                 android:layout_marginEnd="100dp"
                 android:layout_marginBottom="8dp"
                 android:text="TextView"
+                android:textColor="@color/classic_text_classic_grey_tint"
                 android:textSize="12sp" />
 
             <ProgressBar
                 android:id="@+id/progressBarList"
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end"
                 android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp" />
+                android:layout_marginEnd="18dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -83,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="55dp"
-        android:backgroundTint="#8C9EFF"
+        android:backgroundTint="@color/material_A100_light"
         app:cardCornerRadius="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/itemNameList"
         app:layout_constraintEnd_toEndOf="@+id/itemNameList"
@@ -92,6 +93,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:backgroundTint="@color/material_A100"
             android:orientation="vertical">
 
             <TextView
