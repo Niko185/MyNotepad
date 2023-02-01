@@ -4,13 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/main_background_color_super_light_gray">
+    android:layout_marginTop="0.5dp"
+    android:layout_marginBottom="0.5dp"
+    android:background="@color/main_background_color_no">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0.5dp"
+        android:layout_marginBottom="0.5dp"
+        android:elevation="0dp"
+        app:cardBackgroundColor="@null"
         app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +24,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="24dp">
 
             <ImageButton
                 android:id="@+id/deleteItemNoteFragment"
@@ -37,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="8dp"
+                android:padding="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +54,6 @@
                     android:id="@+id/nameItemNoteFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:paddingTop="4dp"
                     android:paddingEnd="4dp"
@@ -60,7 +66,6 @@
                     android:id="@+id/descriptionItemNoteFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:ellipsize="end"
                     android:maxLength="35"
@@ -76,12 +81,11 @@
                     android:id="@+id/timeItemNoteFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:gravity="end"
                     android:paddingTop="4dp"
                     android:paddingEnd="4dp"
-                    android:paddingBottom="4dp"
                     android:text="1:25 - 01/02/2023"
                     android:textColor="@color/classic_text_classic_grey_tint"
                     android:textSize="10sp" />

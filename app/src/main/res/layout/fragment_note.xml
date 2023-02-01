@@ -12,7 +12,7 @@
         android:id="@+id/recyclerViewNote"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/main_background_color_super_light_gray"
+        android:background="@color/white"
         android:visibility="visible">
 
     </androidx.recyclerview.widget.RecyclerView>

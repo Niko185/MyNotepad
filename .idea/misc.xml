@@ -7,14 +7,18 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.238" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.238" />
         <entry key="app/src/main/res/drawable/ic_add_shopping_list.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/ic_arrow_right.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable/ic_baseline_shopping_basket_24.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/ic_bold.xml" value="0.238" />
         <entry key="app/src/main/res/drawable/ic_delete.xml" value="0.238" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.238" />
+        <entry key="app/src/main/res/drawable/ic_line.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/ic_list.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/ic_new.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/ic_note.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/ic_picker.xml" value="0.238" />
+        <entry key="app/src/main/res/drawable/ic_round_vertical_distribute_24.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/ic_save.xml" value="0.206" />
         <entry key="app/src/main/res/drawable/ic_screen_add.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.194" />
@@ -34,8 +38,8 @@
         <entry key="app/src/main/res/layout/item_delete_diaolog.xml" value="0.30218068535825543" />
         <entry key="app/src/main/res/layout/item_edit_text_for_shopping_element.xml" value="0.38594360351562507" />
         <entry key="app/src/main/res/layout/item_for_activity_shopping_element.xml" value="0.3295003255208333" />
-        <entry key="app/src/main/res/layout/item_for_fragment_note.xml" value="0.3371002197265625" />
-        <entry key="app/src/main/res/layout/item_for_fragment_shopping_list.xml" value="0.5009724934895833" />
+        <entry key="app/src/main/res/layout/item_for_fragment_note.xml" value="0.337200927734375" />
+        <entry key="app/src/main/res/layout/item_for_fragment_shopping_list.xml" value="0.3099294026692707" />
         <entry key="app/src/main/res/layout/item_for_note.xml" value="0.37495320638020824" />
         <entry key="app/src/main/res/layout/item_for_shop_name_list.xml" value="0.43012084960937513" />
         <entry key="app/src/main/res/layout/item_library_for_shopping_element.xml" value="0.3098958333333333" />

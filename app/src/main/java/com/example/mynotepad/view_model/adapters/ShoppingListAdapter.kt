@@ -33,7 +33,7 @@ class ShoppingListAdapter(private val listenerItem: ListenerItem) : ListAdapter<
         fun setData(shoppingListItemData: ShoppingListItemData, listenerItem: ListenerItem) = with(bindingItem) {
 
             tvNameList.text = shoppingListItemData.columnName
-            tvTimeList.text = shoppingListItemData.columnTime
+            //tvTimeList.text = shoppingListItemData.columnTime
 
 
             itemView.setOnClickListener {
@@ -52,14 +52,14 @@ class ShoppingListAdapter(private val listenerItem: ListenerItem) : ListAdapter<
             progressBarList.progressTintList = colorState
 
 
-            cardCounter.backgroundTintList = colorState
+           // cardCounter.backgroundTintList = colorState
             val counterText = "${shoppingListItemData.columnCheckedItemCounter} / ${shoppingListItemData.columnElementInList}"
             tvCounterList.text = counterText
         }
 
         private fun progressBarColor(shoppingListItemData: ShoppingListItemData, context: Context): Int{
             return if(shoppingListItemData.columnCheckedItemCounter == shoppingListItemData.columnElementInList) {
-                ContextCompat.getColor(context, R.color.material_A100)
+                ContextCompat.getColor(context, R.color.material_A100_light)
             } else ContextCompat.getColor(context, R.color.material_A100_light)
         }
 
