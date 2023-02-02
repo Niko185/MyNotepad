@@ -4,19 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="0.5dp"
-    android:layout_marginBottom="0.5dp"
-    android:background="@color/main_background_color_no">
+    android:background="@color/white">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0.5dp"
-        android:elevation="0dp"
-        app:cardBackgroundColor="@null"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

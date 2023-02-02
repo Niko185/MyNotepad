@@ -10,6 +10,8 @@
         android:layout_height="wrap_content"
         android:ems="24"
         android:hint="@string/text_hint_action_menu"
-        android:inputType="textPersonName"
+        android:inputType="textPersonName|textCapSentences"
+        android:maxLength="25"
+        android:maxLines="1"
         android:textColorHint="#80FFFFFF" />
 </LinearLayout>

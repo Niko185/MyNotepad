@@ -58,8 +58,10 @@ class NoteFragment : OptionalFragments(), NoteAdapter.ListenerOnClickItemNoteFra
     private fun observerNoteFragment() {
         mainViewModel.setAllNoteItemData.observe(viewLifecycleOwner) {
             noteAdapter.submitList(it)
-        }
 
+            binding.tvAddNote.text = "Add a new note"
+            binding.tvAddNote.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
+        }
     }
 
 

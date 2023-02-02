@@ -39,8 +39,6 @@ class ShoppingElementAdapter(private val listenerScreen: ListenerScreen) : ListA
     class ItemHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
 
-
-
         fun setDataShoppingElementItem(
             shoppingElementItemData: ShoppingElementItemData,
             listenerScreen: ListenerScreen
@@ -109,7 +107,7 @@ class ShoppingElementAdapter(private val listenerScreen: ListenerScreen) : ListA
                 fun inflateElementItem(parent: ViewGroup): ItemHolder {
                 return ItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_for_activity_shopping_element, parent, false))
             }
-            fun inflateLibraryItem(parent: ViewGroup): ItemHolder {
+                fun inflateLibraryItem(parent: ViewGroup): ItemHolder {
                 return ItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_library_for_shopping_element, parent, false))
             }
         }

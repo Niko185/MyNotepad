@@ -4,85 +4,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="16dp"
-    android:paddingTop="24dp"
-    android:paddingEnd="24dp"
-    android:paddingBottom="24dp">
+    android:background="@color/white">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardCounter"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/white"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvButtonEdit"
-        app:layout_constraintEnd_toStartOf="@+id/tvButtonEdit"
-        app:layout_constraintTop_toTopOf="@+id/tvButtonEdit">
+        android:layout_marginBottom="0.5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/material_A100"
-            android:orientation="vertical">
+            android:padding="44dp">
+
+            <ImageButton
+                android:id="@+id/tvButtonEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:elevation="4dp"
+                android:padding="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvButtonDelete"
+                app:layout_constraintEnd_toStartOf="@+id/tvButtonDelete"
+                app:layout_constraintTop_toTopOf="@+id/tvButtonDelete"
+                app:srcCompat="@drawable/ic_baseline_edit_24"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <ProgressBar
+                android:id="@+id/progressBarList"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tvButtonDelete"
+                app:layout_constraintStart_toStartOf="@+id/cardCounter"
+                app:layout_constraintTop_toBottomOf="@+id/tvButtonEdit" />
 
             <TextView
-                android:id="@+id/tvCounterList"
-                android:layout_width="match_parent"
+                android:id="@+id/tvNameList"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="0/0"
-                android:textColor="@color/classic_text_classic_grey" />
-        </LinearLayout>
+                android:elevation="4dp"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:text="List 1"
+                android:textColor="@color/classic_text_classic_grey"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/tvButtonDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:elevation="4dp"
+                android:padding="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_close"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvButtonEdit"
+                app:layout_constraintEnd_toStartOf="@+id/tvButtonEdit"
+                app:layout_constraintTop_toTopOf="@+id/tvButtonEdit">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/material_A100"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvCounterList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="0/0"
+                        android:textColor="@color/classic_text_classic_grey" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
-    <ImageButton
-        android:id="@+id/tvButtonDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:elevation="4dp"
-        android:padding="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_close"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-    <ImageButton
-        android:id="@+id/tvButtonEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:background="@null"
-        android:elevation="4dp"
-        android:padding="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvButtonDelete"
-        app:layout_constraintEnd_toStartOf="@+id/tvButtonDelete"
-        app:layout_constraintTop_toTopOf="@+id/tvButtonDelete"
-        app:srcCompat="@drawable/ic_baseline_edit_24"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-    <ProgressBar
-        android:id="@+id/progressBarList"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:elevation="4dp"
-        app:layout_constraintEnd_toEndOf="@+id/tvButtonDelete"
-        app:layout_constraintStart_toStartOf="@+id/cardCounter"
-        app:layout_constraintTop_toBottomOf="@+id/tvButtonEdit" />
-
-    <TextView
-        android:id="@+id/tvNameList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="4dp"
-        android:text="List 1"
-        android:textColor="@color/classic_text_classic_grey"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

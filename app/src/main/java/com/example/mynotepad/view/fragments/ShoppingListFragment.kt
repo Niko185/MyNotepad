@@ -72,6 +72,9 @@ class ShoppingListFragment : OptionalFragments(), ShoppingListAdapter.ListenerIt
     private fun observer() {
         mainViewModel.setAllShoppingLisItemData.observe(viewLifecycleOwner) {
             shoppingListAdapter.submitList(it)
+
+            binding.addShoppingList.text = "Add new list"
+            binding.addShoppingList.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
         }
     }
 

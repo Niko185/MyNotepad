@@ -17,4 +17,13 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
+    <TextView
+        android:id="@+id/tvAddNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="360dp"
+        android:text="Add a new note"
+        android:visibility="visible" />
+
 </FrameLayout>
