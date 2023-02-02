@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         launcherFragment()
         setContentView(binding.root)
         setBottomNavigationMenuListener()
-
     }
 
     // Bottom menu functions
