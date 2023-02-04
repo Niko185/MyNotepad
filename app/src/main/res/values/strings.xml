@@ -33,10 +33,23 @@
     <string name="button_text_create_variant">Create</string>
 
 
-
     <!-- Shopping List fragment -->
     <string name="item_text_delete">Delete</string>
     <string name="item_text_edit">Edit</string>
+
+    <!-- Setting Preference Screen -->
+    <string name="preference_category_general">General settings</string>
+    <string name="list_preference_note_title">Style note</string>
+    <string name="list_preference_time_title">Time format</string>
+    <string name="list_preference_premium">Activate premium</string>
+    <string name="list_preference_premium_summary">No ads materials</string>
+    <string name="preference_category_theme">Theme settings</string>
+    <string name="color_theme">Colors</string>
+    <string name="preference_category_text_size">Text size settings</string>
+    <string name="list_preference_text_size_title">Note title text size</string>
+    <string name="list_preference_text_size_description">Note description text size</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

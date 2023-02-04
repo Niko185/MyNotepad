@@ -15,8 +15,11 @@
         android:theme="@style/Theme.MyNotepad"
         tools:targetApi="31">
         <activity
+            android:name=".view.activities.SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ShoppingElementActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activities.NoteRedactorActivity"
             android:exported="true"

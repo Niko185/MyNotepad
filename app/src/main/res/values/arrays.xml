@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="note_style_array">
+        <item>Linear</item>
+        <item>Grid</item>
+    </string-array>
+    
+    <string-array name="note_style_memory_array">
+        <item>Linear memory</item>
+        <item>Grid memory</item>
+    </string-array>
+
+
+
+    <string-array name="time_format_array">
+        <item>Europe format</item>
+        <item>Ocean format</item>
+    </string-array>
+
+    <string-array name="time_format_memory_array">
+        <item>"hh:mm - dd/MM/yyyy"</item>
+        <item>"hh:mm:ss - yyyy/MM/dd</item>
+    </string-array>
+
+
+
+    <string-array name="theme_colors_array">
+        <item>Standard theme</item>
+        <item>Dark theme</item>
+    </string-array>
+
+    <string-array name="theme_colors_memory_array">
+        <item>Standard theme memory</item>
+        <item>Dark theme memory</item>
+    </string-array>
+
+
+
+    <string-array name="text_size_array">
+        <item>Small text</item>
+        <item>Standard text</item>
+        <item>Big text</item>
+    </string-array>
+
+    <string-array name="text_size_memory_array">
+        <item>14</item>
+        <item>16</item>
+        <item>20</item>
+    </string-array>
+
+</resources>

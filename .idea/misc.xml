@@ -26,6 +26,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_new_note.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_note_redactor.xml" value="0.3503936767578125" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_shop_unit_elements.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_shopping_element.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dialog_create.xml" value="0.3277679443359376" />
@@ -33,6 +34,7 @@
         <entry key="app/src/main/res/layout/dialog_edit_element.xml" value="0.35113220214843743" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_note.xml" value="0.23197784423828127" />
+        <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_shop_list_names.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_shopping_list.xml" value="0.22549896240234377" />
         <entry key="app/src/main/res/layout/item_delete_diaolog.xml" value="0.30218068535825543" />
@@ -53,6 +55,7 @@
         <entry key="app/src/main/res/menu/new_note_menu.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/menu/note_add_menu.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.238" />
+        <entry key="app/src/main/res/xml/settings_preference.xml" value="0.2809616088867188" />
       </map>
     </option>
   </component>
