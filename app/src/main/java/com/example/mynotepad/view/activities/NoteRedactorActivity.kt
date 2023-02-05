@@ -1,6 +1,7 @@
 package com.example.mynotepad.activities
 import android.annotation.SuppressLint
 import  android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,7 +13,9 @@ import android.view.MenuItem
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.EditText
 import androidx.core.content.ContextCompat
+import androidx.preference.PreferenceManager
 import com.example.mynotepad.R
 import com.example.mynotepad.databinding.ActivityNoteRedactorBinding
 import com.example.mynotepad.entities.NoteItemData
@@ -25,16 +28,19 @@ import com.example.mynotepad.utils.TimeManager
 class NoteRedactorActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNoteRedactorBinding
     private var noteItemData: NoteItemData? = null
+    lateinit var pref: SharedPreferences
 
         // Activity Functions
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNoteRedactorBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        actionBarSettings()
-        getAllNoteItemData()
-        initMotionColorPicker()
-        onClickColorPicker()
+            setContentView(binding.root)
+            actionBarSettings()
+            getAllNoteItemData()
+            initObjects()
+            setTextSizeDone()
+            setTextSizeDone()
+            onClickColorPicker()
     }
 
 
@@ -154,8 +160,9 @@ class NoteRedactorActivity : AppCompatActivity() {
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun initMotionColorPicker() {
+    private fun initObjects() {
         binding.colorPicker.setOnTouchListener(MotionColorPicker())
+        pref = PreferenceManager.getDefaultSharedPreferences(this)
     }
 
     private fun setColorForText(colorID: Int) = with(binding) {
@@ -196,6 +203,18 @@ class NoteRedactorActivity : AppCompatActivity() {
         buttonPicOrange.setOnClickListener {
             setColorForText(R.color.color_picker_orange)
         }
+    }
+
+    //Settings Preference Functions
+
+
+    private fun EditText.setTextSize(size: String?) {
+        if(size != null) this.textSize = size.toFloat()
+    }
+
+    private fun setTextSizeDone() = with(binding) {
+        nameNoteRedactor.setTextSize(pref.getString("key_text_size_title", "20"))
+        descriptionNoteRedactor.setTextSize(pref.getString("key_text_size_description", "16"))
     }
 
 

@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory android:title="@string/preference_category_general">
+    <PreferenceCategory
+        android:title="@string/preference_category_general">
+
         <ListPreference
             android:defaultValue="1"
             android:entries="@array/note_style_array"
             android:entryValues="@array/note_style_memory_array"
+            android:icon="@drawable/ic_style"
             android:key="key_note_style"
             android:title="@string/list_preference_note_title"
-            android:icon="@drawable/ic_style"
-            app:useSimpleSummaryProvider="true"/>
+            app:useSimpleSummaryProvider="true" />
 
         <ListPreference
             android:defaultValue="2"
             android:entries="@array/time_format_array"
             android:entryValues="@array/time_format_memory_array"
+            android:icon="@drawable/ic_time"
             android:key="key_time_format"
             android:title="@string/list_preference_time_title"
-            android:icon="@drawable/ic_time"
-            app:useSimpleSummaryProvider="true"/>
+            app:useSimpleSummaryProvider="true" />
 
         <Preference
             android:defaultValue="3"
-            android:title="@string/list_preference_premium"
             android:icon="@drawable/ic_premium"
-            android:summary="@string/list_preference_premium_summary" />
+            android:summary="@string/list_preference_premium_summary"
+            android:title="@string/list_preference_premium" />
     </PreferenceCategory>
 
 
@@ -34,9 +37,9 @@
             android:defaultValue="1"
             android:entries="@array/theme_colors_array"
             android:entryValues="@array/theme_colors_memory_array"
+            android:icon="@drawable/ic_palette"
             android:key="key_theme"
             android:title="@string/color_theme"
-            android:icon="@drawable/ic_palette"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
@@ -46,18 +49,18 @@
             android:defaultValue="1"
             android:entries="@array/text_size_array"
             android:entryValues="@array/text_size_memory_array"
+            android:icon="@drawable/ic_format_size"
             android:key="key_text_size_title"
             android:title="@string/list_preference_text_size_title"
-            android:icon="@drawable/ic_format_size"
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
             android:defaultValue="2"
             android:entries="@array/text_size_array"
             android:entryValues="@array/text_size_memory_array"
+            android:icon="@drawable/ic_format_size"
             android:key="key_text_size_description"
             android:title="@string/list_preference_text_size_description"
-            android:icon="@drawable/ic_format_size"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 </PreferenceScreen>
