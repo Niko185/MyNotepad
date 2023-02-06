@@ -27,7 +27,7 @@
 
     <string-array name="theme_colors_array">
         <item>Standard theme</item>
-        <item>Dark theme</item>
+        <item>Monochrome theme</item>
     </string-array>
 
     <string-array name="theme_colors_memory_array">

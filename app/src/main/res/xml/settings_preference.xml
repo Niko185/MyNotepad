@@ -34,7 +34,7 @@
 
     <PreferenceCategory android:title="@string/preference_category_theme">
         <ListPreference
-            android:defaultValue="1"
+            android:defaultValue="Standard theme memory "
             android:entries="@array/theme_colors_array"
             android:entryValues="@array/theme_colors_memory_array"
             android:icon="@drawable/ic_palette"

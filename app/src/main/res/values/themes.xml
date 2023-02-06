@@ -7,7 +7,7 @@
         <item name="colorPrimaryVariant">@color/material_A100_light</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/material_A100_light</item>
+        <item name="colorSecondary">@color/material_A100</item>
         <item name="colorSecondaryVariant">@color/material_A100_dark</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->

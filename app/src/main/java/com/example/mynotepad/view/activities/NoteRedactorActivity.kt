@@ -34,6 +34,8 @@ class NoteRedactorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNoteRedactorBinding.inflate(layoutInflater)
+            pref = PreferenceManager.getDefaultSharedPreferences(this)
+            setTheme(getSelectedTheme())
             setContentView(binding.root)
             actionBarSettings()
             getAllNoteItemData()
@@ -215,6 +217,10 @@ class NoteRedactorActivity : AppCompatActivity() {
     private fun setTextSizeDone() = with(binding) {
         nameNoteRedactor.setTextSize(pref.getString("key_text_size_title", "20"))
         descriptionNoteRedactor.setTextSize(pref.getString("key_text_size_description", "16"))
+    }
+
+    private fun getSelectedTheme(): Int {
+        return if(pref.getString("key_theme", "Standard theme memory") == "Standard theme memory") R.style.Theme_MyNotepad else R.style.Theme_MyNotepadTwo
     }
 
 
