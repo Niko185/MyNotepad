@@ -20,7 +20,7 @@
 
     <string-array name="time_format_memory_array">
         <item>"hh:mm - dd/MM/yyyy"</item>
-        <item>"hh:mm:ss - yyyy/MM/dd</item>
+        <item>"hh:mm - yyyy/MM/dd</item>
     </string-array>
 
 

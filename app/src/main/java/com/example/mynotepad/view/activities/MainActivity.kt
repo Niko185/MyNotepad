@@ -12,6 +12,7 @@ import com.example.mynotepad.view.activities.SettingsActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
+    private var currentMenuItemId = R.id.shopping_list
 
     // Activity functions
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +28,14 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationMenu.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.settings -> startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
-                R.id.note -> FragmentManager.setFragment(NoteFragment.newInstance(), this@MainActivity)
-                R.id.shopping_list -> FragmentManager.setFragment(ShoppingListFragment.newInstance(), this@MainActivity)
+                R.id.note -> {
+                    currentMenuItemId = R.id.note
+                    FragmentManager.setFragment(NoteFragment.newInstance(), this@MainActivity)
+                }
+                R.id.shopping_list -> {
+                    currentMenuItemId = R.id.shopping_list
+                    FragmentManager.setFragment(ShoppingListFragment.newInstance(), this@MainActivity)
+                }
                 R.id.add_item -> FragmentManager.openNowFragment?.onClickAdd()
             }
             true
@@ -37,7 +44,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
+    override fun onResume() {
+        super.onResume()
+        binding.bottomNavigationMenu.selectedItemId = currentMenuItemId
+    }
 
     private fun launcherFragment() {
         FragmentManager.setFragment(ShoppingListFragment.newInstance(), this@MainActivity)

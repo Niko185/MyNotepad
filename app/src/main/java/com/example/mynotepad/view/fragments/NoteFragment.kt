@@ -2,6 +2,7 @@ package com.example.mynotepad.fragments
 
 import android.app.Activity
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,10 @@ import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.mynotepad.model.database.MainDataBaseInstance
 import com.example.mynotepad.activities.NoteRedactorActivity
 import com.example.mynotepad.view_model.MainViewModel
@@ -23,6 +27,7 @@ class NoteFragment : OptionalFragments(), NoteAdapter.ListenerOnClickItemNoteFra
     private lateinit var binding: FragmentNoteBinding
     private lateinit var intentLauncherInstanceFromNoteFragment: ActivityResultLauncher<Intent>
     private lateinit var noteAdapter: NoteAdapter
+    private lateinit var pref: SharedPreferences
     private val mainViewModel: MainViewModel by activityViewModels() {
         MainViewModel.MainViewModelFactory((context?.applicationContext as MainDataBaseInstance).mainDataBaseInstance)
     }
@@ -51,10 +56,18 @@ class NoteFragment : OptionalFragments(), NoteAdapter.ListenerOnClickItemNoteFra
 
     //Adapter and RcView Functions
     private fun initRecyclerViewNoteFragment() = with(binding) {
-        recyclerViewNote.layoutManager = LinearLayoutManager(activity)
-        noteAdapter = NoteAdapter(this@NoteFragment)
+        pref = PreferenceManager.getDefaultSharedPreferences(requireContext().applicationContext)
+        recyclerViewNote.layoutManager = getLayoutManager()
+        noteAdapter = NoteAdapter(this@NoteFragment, pref)
         recyclerViewNote.adapter = noteAdapter
     }
+
+    private fun getLayoutManager() :RecyclerView.LayoutManager {
+        return if(pref.getString("key_note_style", "Linear memory") == "Linear memory") {
+            LinearLayoutManager(activity)
+        } else StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+    }
+
     private fun observerNoteFragment() {
         mainViewModel.setAllNoteItemData.observe(viewLifecycleOwner) {
             noteAdapter.submitList(it)
