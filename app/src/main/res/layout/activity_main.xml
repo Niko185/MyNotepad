@@ -41,9 +41,6 @@
         android:src="@drawable/ic_baseline"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="@+id/placeHolder"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-
-
-
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,6 +55,7 @@
         <entry key="app/src/main/res/menu/menu_for_shopping_element_activity.xml" value="0.30885416666666665" />
         <entry key="app/src/main/res/menu/new_note_menu.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/menu/note_add_menu.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/menu/note_redactor_menu.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.238" />
         <entry key="app/src/main/res/xml/settings_preference.xml" value="0.2809616088867188" />
       </map>
