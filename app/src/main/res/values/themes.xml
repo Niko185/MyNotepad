@@ -9,7 +9,7 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/material_A100</item>
         <item name="colorSecondaryVariant">@color/material_A100_dark</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/material_A100</item>
         <!-- Customize your theme here. -->
@@ -25,7 +25,7 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/color_picker_black</item>
         <item name="colorSecondaryVariant">@color/material_dynamic_neutral50</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/material_dynamic_neutral30</item>
         <!-- Customize your theme here. -->
