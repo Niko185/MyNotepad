@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         launcherFragment()
         setContentView(binding.root)
         setBottomNavigationMenuListener()
+        onClickFab()
     }
 
     // Bottom menu functions
@@ -43,11 +44,16 @@ class MainActivity : AppCompatActivity() {
                     currentMenuItemId = R.id.shopping_list
                     FragmentManager.setFragment(ShoppingListFragment.newInstance(), this@MainActivity)
                 }
-                R.id.add_item -> FragmentManager.openNowFragment?.onClickAdd()
             }
             true
         }
 
+    }
+
+    private fun onClickFab() = with(binding){
+        fabButton.setOnClickListener {
+            FragmentManager.openNowFragment?.onClickAdd()
+        }
     }
 
 
