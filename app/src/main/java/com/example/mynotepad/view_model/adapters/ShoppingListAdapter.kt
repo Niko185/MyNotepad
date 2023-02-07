@@ -1,11 +1,14 @@
 package com.example.mynotepad.adapters
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.toColor
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +20,7 @@ import com.example.mynotepad.entities.ShoppingListItemData
 
 class ShoppingListAdapter(private val listenerItem: ListenerItem) : ListAdapter<ShoppingListItemData, ShoppingListAdapter.ItemHolder>(ItemComparator()) {
     lateinit var bindingItem: ItemForFragmentShoppingListBinding
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         return ItemHolder.create(parent)
@@ -57,7 +61,8 @@ class ShoppingListAdapter(private val listenerItem: ListenerItem) : ListAdapter<
             tvCounterList.text = counterText
         }
 
-        private fun progressBarColor(shoppingListItemData: ShoppingListItemData, context: Context): Int{
+        private fun progressBarColor(shoppingListItemData: ShoppingListItemData, context: Context): Int {
+
             return if(shoppingListItemData.columnCheckedItemCounter == shoppingListItemData.columnElementInList) {
                 ContextCompat.getColor(context, R.color.material_A100_light)
             } else ContextCompat.getColor(context, R.color.material_A100_light)

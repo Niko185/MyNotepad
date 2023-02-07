@@ -24,11 +24,7 @@
             android:title="@string/list_preference_time_title"
             app:useSimpleSummaryProvider="true" />
 
-        <Preference
-            android:defaultValue="3"
-            android:icon="@drawable/ic_premium"
-            android:summary="@string/list_preference_premium_summary"
-            android:title="@string/list_preference_premium" />
+
     </PreferenceCategory>
 
 
