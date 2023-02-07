@@ -32,7 +32,7 @@
 
     <string-array name="theme_colors_memory_array">
         <item>Standard theme memory</item>
-        <item>Dark theme memory</item>
+        <item>Monochrome theme memory</item>
     </string-array>
 
 
