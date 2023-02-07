@@ -2,6 +2,7 @@ package com.example.mynotepad.activities
 
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -12,6 +13,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import androidx.activity.viewModels
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mynotepad.R
 import com.example.mynotepad.model.database.MainDataBaseInstance
@@ -34,6 +36,7 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
     private lateinit var  shoppingElementAdapter: ShoppingElementAdapter
     private lateinit var textWatcher: TextWatcher
     private lateinit var libraryItemData: LibraryItemData
+    private lateinit var pref: SharedPreferences
 
 
     private val mainViewModel: MainViewModel by viewModels {
@@ -41,6 +44,8 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        pref = PreferenceManager.getDefaultSharedPreferences(this)
+        setTheme(getSelectedTheme())
         super.onCreate(savedInstanceState)
         binding = ActivityShoppingElementBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -244,6 +249,10 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
     override fun onBackPressed() {
         saveSorted()
         super.onBackPressed()
+    }
+
+    private fun getSelectedTheme(): Int {
+        return if(pref.getString("key_theme", "Standard theme memory") == "Standard theme memory") R.style.Theme_MyNotepad else R.style.Theme_MyNotepadTwo
     }
 
 

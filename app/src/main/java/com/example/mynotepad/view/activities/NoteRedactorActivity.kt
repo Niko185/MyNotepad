@@ -32,10 +32,10 @@ class NoteRedactorActivity : AppCompatActivity() {
 
         // Activity Functions
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityNoteRedactorBinding.inflate(layoutInflater)
             pref = PreferenceManager.getDefaultSharedPreferences(this)
             setTheme(getSelectedTheme())
+        super.onCreate(savedInstanceState)
+        binding = ActivityNoteRedactorBinding.inflate(layoutInflater)
             setContentView(binding.root)
             actionBarSettings()
             getAllNoteItemData()
