@@ -5,7 +5,7 @@
     package="com.example.mynotepad">
 
     <application
-        android:name="com.example.mynotepad.model.database.MainDataBaseInstance"
+        android:name="com.example.mynotepad.database.MainDataBaseInstance"
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,7 +15,7 @@
         android:theme="@style/Theme.MyNotepad"
         tools:targetApi="31">
         <activity
-            android:name=".view.activities.SettingsActivity"
+            android:name=".activities.SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.ShoppingElementActivity"

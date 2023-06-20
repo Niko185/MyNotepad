@@ -30,7 +30,6 @@ class NoteRedactorActivity : AppCompatActivity() {
     private var noteItemData: NoteItemData? = null
     lateinit var pref: SharedPreferences
 
-        // Activity Functions
     override fun onCreate(savedInstanceState: Bundle?) {
             pref = PreferenceManager.getDefaultSharedPreferences(this)
             setTheme(getSelectedTheme())
@@ -45,8 +44,6 @@ class NoteRedactorActivity : AppCompatActivity() {
             onClickColorPicker()
     }
 
-
-        // ActionBar Functions
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.note_redactor_menu, menu)
         return super.onCreateOptionsMenu(menu)
@@ -73,8 +70,6 @@ class NoteRedactorActivity : AppCompatActivity() {
         actionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-
-    // Launcher Functions NoteRedactorActivity <-> NoteFragment
     private fun launcherIdentificationSendBackAnswerIntent() {
         var stateIdentification = "key_new_identification"
         val newIdentification: NoteItemData? = if(noteItemData == null) {
@@ -121,8 +116,6 @@ class NoteRedactorActivity : AppCompatActivity() {
         )
     }
 
-
-    // Bold Text style functions
     private fun setBoldText() = with(binding) {
         val startPosition = descriptionNoteRedactor.selectionStart
         val endPosition = descriptionNoteRedactor.selectionEnd
@@ -139,8 +132,6 @@ class NoteRedactorActivity : AppCompatActivity() {
         descriptionNoteRedactor.setSelection(startPosition)
     }
 
-
-     // Color Picker Functions
     private fun openColorPicker() {
         binding.colorPicker.visibility = View.VISIBLE
         val beginAnimation = AnimationUtils.loadAnimation(this, R.anim.open_picker)
@@ -171,10 +162,8 @@ class NoteRedactorActivity : AppCompatActivity() {
         val startPosition = descriptionNoteRedactor.selectionStart
         val endPosition = descriptionNoteRedactor.selectionEnd
 
-
         val styles = descriptionNoteRedactor.text.getSpans(startPosition, endPosition, ForegroundColorSpan::class.java)
         if(styles.isNotEmpty()) { descriptionNoteRedactor.text.removeSpan(styles[0]) }
-
 
         descriptionNoteRedactor.text.setSpan(ForegroundColorSpan(ContextCompat.getColor(this@NoteRedactorActivity, colorID)), startPosition, endPosition, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         descriptionNoteRedactor.text.trim()
@@ -207,9 +196,6 @@ class NoteRedactorActivity : AppCompatActivity() {
         }
     }
 
-    //Settings Preference Functions
-
-
     private fun EditText.setTextSize(size: String?) {
         if(size != null) this.textSize = size.toFloat()
     }
@@ -222,6 +208,4 @@ class NoteRedactorActivity : AppCompatActivity() {
     private fun getSelectedTheme(): Int {
         return if(pref.getString("key_theme", "Standard theme memory") == "Standard theme memory") R.style.Theme_MyNotepad else R.style.Theme_MyNotepadTwo
     }
-
-
 }

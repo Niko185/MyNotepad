@@ -1,4 +1,4 @@
-package com.example.mynotepad.view.fragments
+package com.example.mynotepad.fragments
 
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat

@@ -8,7 +8,6 @@ import java.io.Serializable
 @Entity (tableName = "table_note_item_data")
 data class NoteItemData(
 
-
     @PrimaryKey(autoGenerate = true)
     val primaryKey: Int?,
 

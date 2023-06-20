@@ -1,4 +1,4 @@
-package com.example.mynotepad.model.database
+package com.example.mynotepad.database
 
 import androidx.room.*
 import androidx.room.Dao
@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface Dao {
 
-        // NoteFragment Function Database
     @Query ("SELECT * FROM table_note_item_data")
     fun getAllNoteItemData() : Flow<List<NoteItemData>>
 
@@ -25,8 +24,6 @@ interface Dao {
     @Query ("DELETE FROM table_note_item_data WHERE primaryKey IS :primaryKey")
     suspend fun deleteNoteItemData(primaryKey: Int)
 
-
-        // ShoppingListFragment Functions Database
     @Query ("SELECT * FROM table_shopping_list_item_data")
     fun getAllShoppingListItemData(): Flow<List<ShoppingListItemData>>
 
@@ -56,7 +53,6 @@ interface Dao {
     @Query ("DELETE FROM table_shopping_element_item_data WHERE column_id LIKE :columnId")
     suspend fun clearShoppingElementItemData(columnId: Int)
 
-    // Library Request
     @Query ("SELECT * FROM table_library_item_data WHERE column_name LIKE :columnName")
     suspend fun getAllLibraryItemData(columnName: String) : List<LibraryItemData>
 
@@ -68,6 +64,4 @@ interface Dao {
 
     @Query ("DELETE FROM table_library_item_data WHERE primaryKey IS :primaryKey")
     suspend fun deleteLibraryItemData(primaryKey: Int)
-
-
 }

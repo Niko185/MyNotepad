@@ -9,7 +9,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mynotepad.model.database.MainDataBaseInstance
+import com.example.mynotepad.database.MainDataBaseInstance
 import com.example.mynotepad.activities.ShoppingElementActivity
 import com.example.mynotepad.view_model.MainViewModel
 import com.example.mynotepad.adapters.ShoppingListAdapter
@@ -29,10 +29,6 @@ class ShoppingListFragment : OptionalFragments(), ShoppingListAdapter.ListenerIt
    private val mainViewModel: MainViewModel by activityViewModels(){
        MainViewModel.MainViewModelFactory((context?.applicationContext as MainDataBaseInstance).mainDataBaseInstance)
    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentShoppingListBinding.inflate(inflater, container, false)

@@ -10,7 +10,7 @@ import com.example.mynotepad.databinding.ActivityMainBinding
 import com.example.mynotepad.fragments_operation.FragmentManager
 import com.example.mynotepad.fragments.NoteFragment
 import com.example.mynotepad.fragments.ShoppingListFragment
-import com.example.mynotepad.view.activities.SettingsActivity
+import com.example.mynotepad.activities.SettingsActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pref: SharedPreferences
     private var currentTheme = ""
 
-    // Activity functions
     override fun onCreate(savedInstanceState: Bundle?) {
         pref = PreferenceManager.getDefaultSharedPreferences(this)
         currentTheme = pref.getString("key_theme", "Standard theme memory").toString()
@@ -31,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         onClickFab()
     }
 
-    // Bottom menu functions
     private fun setBottomNavigationMenuListener() {
         binding.bottomNavigationMenu.setOnItemSelectedListener {
             when(it.itemId) {
@@ -55,7 +53,6 @@ class MainActivity : AppCompatActivity() {
             FragmentManager.openNowFragment?.onClickAdd()
         }
     }
-
 
     override fun onResume() {
         super.onResume()

@@ -16,15 +16,15 @@ import androidx.activity.viewModels
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mynotepad.R
-import com.example.mynotepad.model.database.MainDataBaseInstance
+import com.example.mynotepad.database.MainDataBaseInstance
 import com.example.mynotepad.view_model.MainViewModel
 import com.example.mynotepad.databinding.ActivityShoppingElementBinding
 import com.example.mynotepad.entities.LibraryItemData
 import com.example.mynotepad.entities.ShoppingElementItemData
 import com.example.mynotepad.entities.ShoppingListItemData
 import com.example.mynotepad.utils.share.ShareHelper
-import com.example.mynotepad.view.dialogs.DialogEditElement
-import com.example.mynotepad.view_model.adapters.ShoppingElementAdapter
+import com.example.mynotepad.dialogs.DialogEditElement
+import com.example.mynotepad.adapters.ShoppingElementAdapter
 
 class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.ListenerScreen {
     private lateinit var binding: ActivityShoppingElementBinding
@@ -37,7 +37,6 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
     private lateinit var textWatcher: TextWatcher
     private lateinit var libraryItemData: LibraryItemData
     private lateinit var pref: SharedPreferences
-
 
     private val mainViewModel: MainViewModel by viewModels {
         MainViewModel.MainViewModelFactory((applicationContext as MainDataBaseInstance).mainDataBaseInstance)
@@ -106,8 +105,6 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
         mainViewModel.insertShoppingElementAndLibraryItemData(shoppingElementItemData)
     }
 
-
-            // открылось меню edit text
     private fun expandActionView(): MenuItem.OnActionExpandListener {
         return object : MenuItem.OnActionExpandListener {
             override fun onMenuItemActionExpand(p0: MenuItem?): Boolean {
@@ -176,9 +173,6 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
         const val KEY_SHOPPING_LIST_NAME_DATA_FULL = "key_shopping_list_name_data_full"
     }
 
-
-
-
     private fun textWatcher():  TextWatcher {
         return object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -234,7 +228,6 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
         })
     }
 
-    // Заполнение shoppingListItem исходя из данных внутри.
     private fun saveSorted(){
         var checkedItemCounter = 0
         shoppingElementAdapter.currentList.forEach {
@@ -254,7 +247,4 @@ class ShoppingElementActivity : AppCompatActivity(), ShoppingElementAdapter.List
     private fun getSelectedTheme(): Int {
         return if(pref.getString("key_theme", "Standard theme memory") == "Standard theme memory") R.style.Theme_MyNotepad else R.style.Theme_MyNotepadTwo
     }
-
-
-
 }

@@ -21,24 +21,10 @@ import com.example.mynotepad.entities.ShoppingListItemData
 class ShoppingListAdapter(private val listenerItem: ListenerItem) : ListAdapter<ShoppingListItemData, ShoppingListAdapter.ItemHolder>(ItemComparator()) {
     lateinit var bindingItem: ItemForFragmentShoppingListBinding
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
-        return ItemHolder.create(parent)
-    }
-
-    override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        return holder.setData(getItem(position), listenerItem)
-    }
-
     class ItemHolder(view: View) : RecyclerView.ViewHolder(view) {
-
         private val bindingItem = ItemForFragmentShoppingListBinding.bind(view)
-
         fun setData(shoppingListItemData: ShoppingListItemData, listenerItem: ListenerItem) = with(bindingItem) {
-
             tvNameList.text = shoppingListItemData.columnName
-            //tvTimeList.text = shoppingListItemData.columnTime
-
 
             itemView.setOnClickListener {
                 listenerItem.sendShoppingListItemDataForShoppingElementActivityAdapterFun(shoppingListItemData)
@@ -68,7 +54,6 @@ class ShoppingListAdapter(private val listenerItem: ListenerItem) : ListAdapter<
             } else ContextCompat.getColor(context, R.color.material_A100_light)
         }
 
-
         companion object {
             fun create(parent: ViewGroup): ItemHolder {
                 return ItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_for_fragment_shopping_list, parent, false))
@@ -76,8 +61,6 @@ class ShoppingListAdapter(private val listenerItem: ListenerItem) : ListAdapter<
         }
 
     }
-
-
 
     class ItemComparator : DiffUtil.ItemCallback<ShoppingListItemData>() {
         override fun areItemsTheSame(oldItem: ShoppingListItemData, newItem: ShoppingListItemData): Boolean {
@@ -90,10 +73,17 @@ class ShoppingListAdapter(private val listenerItem: ListenerItem) : ListAdapter<
 
     }
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
+        return ItemHolder.create(parent)
+    }
+
+    override fun onBindViewHolder(holder: ItemHolder, position: Int) {
+        return holder.setData(getItem(position), listenerItem)
+    }
+
     interface ListenerItem {
         fun deleteShoppingListItemDataAdapterFun(primaryKey: Int)
         fun updateShoppingListItemDataAdapterFun(shoppingListItemData: ShoppingListItemData)
         fun sendShoppingListItemDataForShoppingElementActivityAdapterFun(shoppingListItemData: ShoppingListItemData)
     }
-
 }

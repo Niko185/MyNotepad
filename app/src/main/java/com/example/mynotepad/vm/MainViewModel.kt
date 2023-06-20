@@ -2,7 +2,7 @@ package com.example.mynotepad.view_model
 
 import androidx.lifecycle.*
 import com.example.mynotepad.entities.LibraryItemData
-import com.example.mynotepad.model.database.MainDataBase
+import com.example.mynotepad.database.MainDataBase
 import com.example.mynotepad.entities.NoteItemData
 import com.example.mynotepad.entities.ShoppingElementItemData
 import com.example.mynotepad.entities.ShoppingListItemData

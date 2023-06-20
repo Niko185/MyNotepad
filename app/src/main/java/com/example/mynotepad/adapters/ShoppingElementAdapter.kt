@@ -1,4 +1,4 @@
-package com.example.mynotepad.view_model.adapters
+package com.example.mynotepad.adapters
 
 import android.graphics.Paint
 import android.view.LayoutInflater
@@ -17,27 +17,11 @@ class ShoppingElementAdapter(private val listenerScreen: ListenerScreen) : ListA
     lateinit var bindingItemElement: ItemForActivityShoppingElementBinding
     lateinit var bindingItemLibrary: ItemLibraryForShoppingElementBinding
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
-        return if (viewType == 0) {
-            ItemHolder.inflateElementItem(parent)
-        } else
-            ItemHolder.inflateLibraryItem(parent)
-    }
-
-    override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        if (getItem(position).columnType == 0)
-            holder.setDataShoppingElementItem(getItem(position), listenerScreen)
-        else  holder.setDataLibraryItem(getItem(position), listenerScreen)
-
-    }
-
     override fun getItemViewType(position: Int): Int {
         return getItem(position).columnType
     }
 
-    // Подготавливаем данные для item, чтобы потом заполнить данными, эти самые item, в функции выше onBindViewHolder(заполнить item)
     class ItemHolder(val view: View) : RecyclerView.ViewHolder(view) {
-
 
         fun setDataShoppingElementItem(
             shoppingElementItemData: ShoppingElementItemData,
@@ -81,8 +65,6 @@ class ShoppingElementAdapter(private val listenerScreen: ListenerScreen) : ListA
             }
         }
 
-
-
             private fun setPaintFlagAndColor(bindingItemElement: ItemForActivityShoppingElementBinding) = with(bindingItemElement) {
                 if (checkBoxElement.isChecked) {
                     nameElement.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
@@ -123,9 +105,19 @@ class ShoppingElementAdapter(private val listenerScreen: ListenerScreen) : ListA
         }
     }
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
+        return if (viewType == 0) {
+            ItemHolder.inflateElementItem(parent)
+        } else
+            ItemHolder.inflateLibraryItem(parent)
+    }
 
+    override fun onBindViewHolder(holder: ItemHolder, position: Int) {
+        if (getItem(position).columnType == 0)
+            holder.setDataShoppingElementItem(getItem(position), listenerScreen)
+        else  holder.setDataLibraryItem(getItem(position), listenerScreen)
 
-
+    }
 
     companion object {
         const val EDIT_ICON_PRESSED = 0

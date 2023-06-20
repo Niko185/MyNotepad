@@ -38,8 +38,6 @@ object CreateDialog {
         mainDialogList.show()
     }
 
-
-
     interface ListenerAction {
         fun onClickOpenDialog(nameList: String)
     }

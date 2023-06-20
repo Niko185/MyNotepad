@@ -1,4 +1,4 @@
-package com.example.mynotepad.view.dialogs
+package com.example.mynotepad.dialogs
 
 import android.app.AlertDialog
 import android.content.Context
@@ -14,7 +14,6 @@ object DialogEditElement {
         val bindingDialog = DialogEditElementBinding.inflate(LayoutInflater.from(context))
         val builder = AlertDialog.Builder(context)
         var mainEditDialogElementInstance: AlertDialog? = null
-
 
         builder.setView(bindingDialog.root)
         bindingDialog.apply {

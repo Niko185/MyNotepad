@@ -14,7 +14,7 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.mynotepad.model.database.MainDataBaseInstance
+import com.example.mynotepad.database.MainDataBaseInstance
 import com.example.mynotepad.activities.NoteRedactorActivity
 import com.example.mynotepad.view_model.MainViewModel
 import com.example.mynotepad.adapters.NoteAdapter
@@ -32,7 +32,6 @@ class NoteFragment : OptionalFragments(), NoteAdapter.ListenerOnClickItemNoteFra
         MainViewModel.MainViewModelFactory((context?.applicationContext as MainDataBaseInstance).mainDataBaseInstance)
     }
 
-    // Fragments Functions
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         launcherIdentificationAction()
@@ -54,7 +53,6 @@ class NoteFragment : OptionalFragments(), NoteAdapter.ListenerOnClickItemNoteFra
 
     }
 
-    //Adapter and RcView Functions
     private fun initRecyclerViewNoteFragment() = with(binding) {
         pref = PreferenceManager.getDefaultSharedPreferences(requireContext().applicationContext)
         recyclerViewNote.layoutManager = getLayoutManager()
@@ -77,8 +75,6 @@ class NoteFragment : OptionalFragments(), NoteAdapter.ListenerOnClickItemNoteFra
         }
     }
 
-
-    // Launcher Functions NoteFragment <-> NoteRedactorActivity
     override fun onClickAdd() {
         intentLauncherInstanceFromNoteFragment.launch(Intent(activity, NoteRedactorActivity::class.java))
     }
@@ -96,7 +92,6 @@ class NoteFragment : OptionalFragments(), NoteAdapter.ListenerOnClickItemNoteFra
             }
         }
     }
-
 
     override fun deleteNoteItemFromRcView(primaryKey: Int) {
         mainViewModel.deleteNoteItemData(primaryKey)
